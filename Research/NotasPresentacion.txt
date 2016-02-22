@@ -1,0 +1,60 @@
+Vamos a ver algunos ejemplos. Algunos tienen una tasa de muestreo de 4 KHz y duran 2.5 segundos. Otros tienen una tasa de muestreo de cerca de 5 KHz y duran 1.8 segundos. Los primeros 3 están tomados de un cd comercial, que quizás algunos de ustedes reconozcan.
+
+ABRIR LOS 3 WAVS. ABRIR BMP. UBICAR BIEN LOS NERO WAVE.
+
+Ejemplo 1
+=================
+OCULTAR MIO - MOSTRAR NERO TEMPORAL.
+Este es el primer ejemplo. Este es un editor de audio comercial, el Nero Wave Editor. Lo elegí para comparar porque tiene varias formas de visualizar los sonidos. Esta es la representación temporal. Se ve el ritmo, pero no se ve nada de melodía o armonía. (WAV)
+
+MOSTRAR NERO ESPECTROGRAMA
+Este programa también nos permite ver un Espectrograma o Sonograma. Esta hecho con una transformada de Fourier con ventana. Vemos que ofrece una buena resolución temporal. Además se ven los tonos, pero la resolución frecuencial no alcanza para identificar las notas. La distancia entre los armónicos es constante, aunque no todos están presentes en este ejemplo. Por esto es que sólo se  alcanza una resolución frecuencial suficiente a frecuencias altas (armónicos altos). (WAV)
+
+MOSTRAR WAVELET
+El Nero Wave también tiene una visualización basada en wavelets. No dicen si usa una transformada wavelet discreta o una discretización de una transformada continua. Vemos que no aparecen los tonos y que no hay mucha diferencia entre sonidos armónicos e inarmónicos. (WAV)
+
+MOSTRAR MIO
+Éste es un mapa de tiempo frecuencia hecho con mi técnica. Vemos que aparecen los tonos, pero además se identifica qué nota está sonando, porque hay una banda para cada nota. También se ven los armónicos. La resolución temporal no es tan buena como la del sonograma, pero es razonable. Se ve que los armónicos más altos están más cercanos entre sí. Al tener una banda para cada armónico, permite procesarlos junto con la fundamental, como una unidad.
+HACER OIR EL EJEMPLO MOSTRANDO EL MAPA
+
+
+Ejemplo 2
+=================
+OCULTAR MIO - MOSTRAR NERO TEMPORAL.
+Para esta señal, en una representación temporal, lo único que se advierte es el acento, porque es cuando la señal tiene mayor amplitud.
+
+MOSTRAR NERO ESPECTROGRAMA
+En el sonograma, tenemos buena resolución temporal. Se ven los tonos, pero se ven también los problemas que ya vimos de la escala frecuencial (que es que no sigue bien a la escala musical, y que no permite identificar notas). Además se usa demasiado espacio para frecuencias altas, donde casi no hay información. (WAV)
+
+MOSTRAR WAVELET
+En la vista con wavelets, no tenemos ninguna posibilidad de identificar correctamente los tonos. La resolución frecuencial es insuficiente. (WAV)
+
+MOSTRAR MIO
+Acá vemos que cada tono y cada armónico está en una banda distinta. Se ve que los armónicos mas altos están mas cercanos. Se identifican correctamente tonos y armónicos.
+HACER OIR EL EJEMPLO MOSTRANDO EL MAPA
+
+
+Ejemplo 3
+=================
+MOSTRAR EL MIO - MOSTRAR EL SONOGRAMA - HACER OIR
+Este ejemplo un poco mas largo esta hecho procesando por separado 3 segmentos y después juntando los mapas en uno solo. Mi representación permite separar los dos sonidos. Una etapa posterior de procesamiento puede intentar hacer la separación en forma automática para procesarlos en forma independiente. En mi representación se llegan a distinguir las melodías de la voz (en negro) y del bajo (en verde), con sus armónicos.
+
+En el sonograma se ve la melodía de la voz, pero no se pueden identificar las notas. Y del bajo no se ven ni siquiera los armónicos.
+
+
+ABRIR LOS 5 WAVS. ABRIR BMP. UBICAR BIEN LOS NERO WAVE. PONER TODOS EN ESPECTROGRAMA
+
+Separación
+=================
+En este ejemplo tenemos una pequeña melodía (BMP-WAV) y un ritmo (BMP-WAV) con sus mapas de tiempo-frecuencia. También se tenemos la mezcla de ellas y su mapa (BMP-WAV). Lo que hice después es separar los coeficientes. En una aplicación real este proceso tendría que ser automático, y todavía hay que estudiar como podría hacerse. Pero yo lo hice a mano, para mostrar las propiedades de la representación. (BMP RITMO) Asigné al ritmo toda la banda inferior (la de la función de escala) y todos los coeficientes de los intervalos temporales de los 3 golpes, excepto los que corresponden a la melodía (notas y armónicos). Asigné a la melodía los coeficientes restantes (BMP MELODIA). Después antitransformé por separado.
+
+(BMP-WAV-RITMO RECUPERADO)
+Se oye que el ritmo recuperado esta bastante contaminado con componentes que en realidad corresponden a la melodía. Esto ocurre por la forma en que hice la separación manual de los coeficientes.
+
+(BMP-WAV-MELODIA RECUPERADA)
+La melodía recuperada esta bastante limpia, se escucha muy similar a la original y casi no tiene rastros del ritmo.
+La separación es bastante satisfactoria, especialmente teniendo en cuenta que este tipo de operaciones actualmente no se consideran posibles en la práctica.
+
+(BMP-WAV-MEZCLA)
+Vemos que en el sonograma la separación no habría sido posible, porque no tenemos manera de saber a qué sonido asignar cada coeficientes. (BMP-WAV-MELODIA ORIGINAL) Además, al ver las señales originales, vemos una superposición importante entre los coeficientes de la melodía y el ritmo, porque los coeficientes de la melodía no tienen una buena localización frecuencial. Las bandas ocupadas por cada armónico son tan anchas como las zonas vacías entre ellos.
+

@@ -1,0 +1,66 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Juan Manuel Vuletich">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (Win98; U) [Netscape]">
+   <title>Morphic</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" alink="#000088" background="back1.GIF">
+
+<center>
+<h1>
+<img SRC="Squeak2.GIF" height=60 width=86>&nbsp;&nbsp;&nbsp; Morphic -
+The Squeak User Interface</h1></center>
+
+<div align=right>by Juan Manuel Vuletich</a></div>
+<a href="../JuanEng.html">Back to Juan's studio</a>
+<p><a href="Morphic-Index.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="Morphic.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="Morphic-Intro2.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+<hr WIDTH="100%">
+<h2>
+Introduction</h2>
+Morphic is the new User Interface in Squeak. It includes a framework for
+building interactive graphical objects (morphs), that can be animated,
+and a set of tools to support the Smalltalk environment. Morphs can be
+built both interactively (by direct manipulation) or by Smalltalk code.
+<p>The original Smalltalk-80 system included the first Graphical User Interface
+(GUI) ever made. The system and its environment were first described in
+[1], and later in [2], [3] and [4].
+<p>The idea behind its User Interface was that any object in the system
+should be easily and immediately accessible to the user. The original MVC
+implementation in Smalltalk made it possible to build general and flexible
+user interfaces for any object, but it didn't make it easy. MVC means Model-View-Controller.
+Any object in the system could be a Model. A Model is an object that the
+user is aware of. Generally a model does not need to know about graphic
+displays or user interaction. A View and a Controller are usually made
+to interact with the user. The View shows a visual representation of the
+Model, that the user can understand. The Controller takes mouse clicks
+and
+<br>keystrokes and changes the View. For example, in a flight simulator,
+a Model could be a world that includes different objects. It's View would
+render a perspective of the pilot's sight through the windshield. The Controller
+would allow to point and click to the visible objects, perhaps to make
+some query on them. This design allows having multiple different views
+operating over one single model at the same time.
+<p>Later, when the Apple Macintosh popularized some of Smalltalk's visual
+look, MVC power (and even the idea of Object) was lost. Even Smalltalk
+environments failed at this. And the original intended book on MVC [5]
+was never published. The "Inside Smalltalk" volume II [6] filled the gap,
+but it was late. Commercial Smalltalk environments started to offer only
+tools for building GUIs, by assembling of standard widgets. Non-Smalltalk
+programming tools also followed this trend. So software developers started
+to restrict their imagination to what can be accomplished by selecting
+controls from a palette, and grouping them on a form.
+<p>Morphic was originally developed by John Maloney and Randy Smith as
+the Self user interface framework. You can read more about this at <a href="Morphic-History.html">History</a>.
+Morphic takes again the idea of any object being visually accessible by
+the user, but it s much simpler and easier than MVC, and it s more powerful
+too. Thus, the set of morphs already included in Squeak is probably richer
+than anything ever done in MVC. (If you don't know MVC, don't worry. Just
+jump into Morphic. MVC knowledge is decidedly not needed to understand
+and work with Morphic.)
+<p>
+<hr WIDTH="100%">
+<br><a href="Morphic-Index.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="Morphic.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="Morphic-Intro2.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+</body>
+</html>

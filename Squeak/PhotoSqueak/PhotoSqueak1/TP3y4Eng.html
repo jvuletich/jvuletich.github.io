@@ -1,0 +1,108 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Juan Manuel Vuletich">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (Win98; U) [Netscape]">
+   <title>Image Processing</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" alink="#000088" background="back1.GIF">
+
+<center>
+<h1>
+<img SRC="Squeak2.GIF" height=60 width=86>&nbsp;&nbsp;&nbsp; PhotoSqueak
+1.0</h1></center>
+
+<div align=right>by Juan Manuel Vuletich</a></div>
+<a href="../../JuanEng.html">Back to Juan's studio</a>
+<p><a href="TP2Eng.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEng.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="DownloadEng.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+<hr WIDTH="100%">
+<center>
+<h1>
+Part 4</h1></center>
+
+<h2>
+<b><font face="Arial"><font size=+1>Exercise 1 - Border Detection by the
+first Derivative</font></font></b></h2>
+
+<h3>
+<i><font face="Arial"><font size=+1>Introduction</font></font></i></h3>
+&nbsp;&nbsp;&nbsp; It was asked to implement border detection by the first
+derivative. This is done by convolution with a filter that aproximates
+the first derivative, and then considering a border those pixels whose
+value is greater than some threshold.
+<h3>
+<b><i><font face="Arial">Development</font></i></b></h3>
+&nbsp;&nbsp;&nbsp; Several filters were used. It can be seen in the example
+that some filters help find borders in different orientations. Local variance
+was later considered, asking for a pixel to be in a high local variance
+neighbourhood (besides being greater than the threshold) to be considered
+a border. In this case, this does not make a big difference.
+<br><img SRC="ProcImagenes09.JPG" height=577 width=949>
+<h2>
+<b><font face="Arial"><font size=+1>Exercise 2 - Border Detection by the
+second Derivative</font></font></b></h2>
+
+<h3>
+<b><i><font face="Arial">Introduction</font></i></b></h3>
+&nbsp;&nbsp;&nbsp; This is done by covolving with a filter that aproximates
+the second derivatice, and considering borders those pixel that represent
+a zero crossing.
+<h3>
+<b><i><font face="Arial">Development</font></i></b></h3>
+&nbsp;&nbsp;&nbsp; I used the following Laplacian filters as second derivative
+approximations:
+<p><tt>a) 0&nbsp; 1&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; b) 1&nbsp; 1&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp; c) -1&nbsp; 2 -1</tt>
+<br><tt>&nbsp;&nbsp; 1 -4&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1 -8&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 -4&nbsp;
+2</tt>
+<br><tt>&nbsp;&nbsp; 0&nbsp; 1&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp; 1&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1&nbsp; 2
+-1</tt>
+<p>&nbsp;&nbsp;&nbsp; As neighbourhood criteria (which neighbours to consider,
+to be a zero crossing) o implemented 4 neighbours, (up, down, left and
+right) and 8 neighbours (including the corners).
+<p>&nbsp;&nbsp;&nbsp; The result is not satisfactory. Too much spurious
+borders are detected. The results are good if the Local variance is also
+considered.
+<h2>
+<b><font face="Arial"><font size=+1>Exercise 3 - Border Detection by the
+Gaussian Laplacian</font></font></b></h2>
+
+<h3>
+<b><i><font face="Arial">Introduction</font></i></b></h3>
+&nbsp;&nbsp;&nbsp; The Gaussian Laplacian is used as the aproximation to
+the second derivative.
+<h3>
+<b><i><font face="Arial">Development</font></i></b></h3>
+&nbsp;&nbsp;&nbsp; The example shows at the top left the original image.
+At the top right, there is the result of the convolution. At the bottom
+center ther is the image of zero crossing points. Too much spurious borders
+are detected (anyway, doesn't it look good?). At the bottom right, the
+local variance is also considered, and the results are the best of this
+work.
+<p><img SRC="ProcImagenes10.JPG" height=634 width=993>
+<h2>
+<b><font face="Arial"><font size=+1>Exercise 4 - Noise sensibility</font></font></b></h2>
+
+<h3>
+<b><i><font face="Arial">Introduction</font></i></b></h3>
+&nbsp;&nbsp;&nbsp; All the implemented methods are tried on noisy images,
+and the results compared.
+<h3>
+<b><i><font face="Arial">Results</font></i></b></h3>
+&nbsp;&nbsp;&nbsp; Note: When processing images with additive gaussian
+noise with any method that includes local variance, it is necessary to
+adjust the local variance threshold to be not less than the variance of
+the noise. If not, the result is useless.
+<p>&nbsp;&nbsp;&nbsp; In the studied cases, the Gaussian Laplacian gives
+better results than the Second Derivative.
+<p>&nbsp;&nbsp;&nbsp; On noiseless images, the Gaussian Laplacian gives
+the best results. But on noisy images, the First Derivative is less affected.
+This means, the results could (in some cases) be better.
+<p>
+<hr WIDTH="100%">
+<br><a href="TP2Eng.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEng.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="DownloadEng.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+</body>
+</html>

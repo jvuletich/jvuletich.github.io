@@ -1,0 +1,115 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Juan Manuel Vuletich">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (Win98; U) [Netscape]">
+   <title>Image Processing</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" alink="#000088" background="back1.GIF">
+
+<center>
+<h1>
+<img SRC="Squeak2.GIF" height=60 width=86>&nbsp;&nbsp;&nbsp; PhotoSqueak
+1.0</h1></center>
+
+<div align=right>by Juan Manuel Vuletich</a></div>
+<a href="../../JuanEng.html">Back to Juan's studio</a>
+<p><a href="TP3y4Eng.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEng.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a>
+<hr WIDTH="100%">
+<center>
+<h2>
+<font size=+3>Download</font></h2></center>
+<a href="Imagenes.zip">Imagenes.zip</a> (6.9 Mb) A full package, that includes
+everything you need to run PhotoSqueak on Windows. Based on Squeak 2.7.
+Just unzip and run Squeak.exe. If you are not using Windows, replace Squeak.exe
+with the appropiate Virtual Machine for your platform, and erase all the
+dlls. If you download this package, you don't need any of the other files.
+<p><a href="Source.zip">Source.zip</a> (31 Kb) Source code for the project,
+to file in <a href="http://www.squeak.org">Squeak</a> 2.7. It includes
+the source for DLL generation. In newer Squeak versions, gives an error
+because the QuickPrint class does not exist any longer. If this is your
+case, modify in
+<br>BorderedPopUpChoiceMorph >> fitContents
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QuickPrint on: Display box: Display
+boundingBox font: self fontToUse
+<br>by
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DisplayScanner quickPrintOn:
+Display box: Display boundingBox font: self fontToUse
+<br>&nbsp;
+<p><a href="OS2Dlls.zip">OS2Dlls.zip</a> (34 Kb) Image and Signal processing
+Dlls, compiled for OS/2 (it works without them, but much slower).
+<p><a href="WinDlls.zip">WinDlls.zip</a> (47 Kb) Image and Signal processing
+Dlls, compiled for Windows (it works without them, but much slower).
+<br>&nbsp;
+<br>&nbsp;
+<center>
+<h2>
+<font size=+3>Tips</font></h2></center>
+The GUI is a bit strange. Please follow do as follows: Open an ImageViewMorph
+(New Morph / Image Processing / ImageViewMorph). Create an image. Then
+you can enter values, or load a file into it. See the meaning of the controls
+for details.
+<p>Try small images first. A monochorme image of 30 x 30 will be usable
+even on the slowest machines. Use the zoom slider to magnify small images.
+<p>Note that this GUI actually does not include a way to save aprocessed
+image. It must be done by a script.
+<br>&nbsp;
+<center>
+<h2>
+<font size=+3>Controls by horizontal row, from top to bottom</font></h2></center>
+<b>Top horizontal slider</b>: controls zoom (warning: slow if no plugin)
+<p><b>Bottom horizontal slider</b>: Opens spreadsheet view of image (up
+to 15x15)
+<p><b>&lt;Update Image></b>: Updates image from spreadsheet view data
+<p><b>&lt;ReZoom></b>: ReZooms the image based on the Zoom field
+<p><b>&lt;New></b>: Creates a new image of the specified pixel type, width,
+height and number of planes (0: monochrome, 3: RGB, others also possible).
+Float images are better for most algorithms. Int16 are almost useless.
+<p><b>&lt;Load></b>: Loads a file of the specified type and fileName on
+the current image.
+<p><b>&lt;Fill></b>: Fills the current inage with the selected noise distribution,
+enter the parameters first.
+<p><b>&lt;Calc new></b>: Select an algoritm to calc a new image, then click.
+You can find histogram equalization, norm histogram equalization (for color/multiband
+images), several edge detection techniques and local variance (in a neighborhood
+of each pixel).
+<p><b>&lt;Calc new></b>: Silimar to the last, but for algorithms tat take
+an argument. Select an operation and enter the argument. Then click the
+button. The argument is a number, except in #contaminateWithSaltAndPepper:
+that takes an array of three numbers, like #(percentageToContaminate bottomValue
+topValue). The operations include several edge detection algorithms, a
+(slow) nonlinear median filter, the extraction of a plane/color in a multiplane/color
+image, and the creation of a Gaussian Laplacian image (for covolving with
+another image).
+<p><b>&lt;Calc new></b>: These operations take another image as an argument.
+So first get another ImageViewMorph with an image. Click on the gray box,
+and without releasing the mouse button, drag to the other image and let
+the button go. An arrow will appear, indicating the image choosen as the
+parameter. If you move any of the morphs, and the arrow does not point
+to the parameter anymore, just select the parameter again, in the same
+way. Here you can find arithmethic operations on images (pixel by pixel),
+and the most important operation in this package, the Convolution.
+<p><b>&lt;Calc new></b>: This one evaluates the text in the box as a Smalltalk
+block, on every pixel of the image.
+<p><b>&lt;Threshold></b>: Every pixel whose value is greater than [Level]
+is set to [Top] (if the [Top] value is entered), and every one whose value
+is lower than [Level] is set to [Bottom] (if the [Bottom) value is entered).
+It's useful when an image has very little values very far from the mean
+value, and the stretching done to show the image lacks contrast. It cuts
+the extremes of the histogram.
+<p><b>&lt;Histogram> &lt;Norm.Hist> &lt;Smooth.Hist></b> are histograms.
+Once you open the histogram, open a halo on the ImageHistogramExtendedView,
+and extend it. Norm histogram takes the norm of each pixel in color/multiband
+images. Smooth Histogram is used for image classification. Please try small
+images first.
+<p><b>&lt;Copy></b>: Opens a new ImageViewMorph with a copy of the image
+in the current.
+<p><b>&lt;Close></b>: Closes the view.
+<p>In the Histogram view, <b>&lt;Loc.Min></b> find local minimum in the
+histogram. Click on the view afterwards, to redraw the morph.
+<p>
+<hr WIDTH="100%">
+<br><a href="TP3y4Eng.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEng.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a>
+</body>
+</html>

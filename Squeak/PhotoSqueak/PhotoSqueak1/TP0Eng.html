@@ -1,0 +1,81 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Juan Manuel Vuletich">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (Win98; U) [Netscape]">
+   <title>Image Processing</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" alink="#000088" background="back1.GIF">
+
+<center>
+<h1>
+<img SRC="Squeak2.GIF" height=60 width=86>&nbsp;&nbsp;&nbsp; PhotoSqueak
+1.0</h1></center>
+
+<div align=right>by Juan Manuel Vuletich</a></div>
+<a href="../../JuanEng.html">Back to Juan's studio</a>
+<p><a href="ImageProcessingEng.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEng.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="TP1Eng.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+<hr WIDTH="100%">
+<center>
+<h1>
+Part 1</h1></center>
+
+<h2>
+<img SRC="ProcImagenes03.JPG" height=624 width=826></h2>
+
+<h2>
+<font size=+2>Exercise 1</font></h2>
+
+<h3>
+<i>Introduction</i></h3>
+&nbsp;&nbsp;&nbsp; It was asked to implement an Abstract Data Type for
+dealing with images, including the implementation of several operations.
+The teachers allowed us to use any tools. I choose to use Squeak Smalltalk,
+because it eases fast development, compact and modularized code, and because
+of the powerful development environment it has.
+<h3>
+<i>Requeriments</i></h3>
+&nbsp;&nbsp;&nbsp;&nbsp; It is required to represent bidimensional images,
+where the pixel values can be <b>Integers, Reals </b>(floats) <b>or Bytes</b>
+(values between 0 and 255). It is also needed to represent images where
+the pixel values are <b>vectors</b> (of the same size for every pixel in
+a given image), of any of the numeric types. These can alse be considered
+as made up by several <b>"bands" or "planes"</b> with scalar pixels. They
+can also be understood as tridimensional images, with <b>(x, y, z)</b>
+coordinates. The implemented methods allow considering the images in any
+of the mentioned ways. The classes are Image and MultiPlaneImage.
+<br>&nbsp;
+<h2>
+<font size=+2>Exercise 2</font></h2>
+
+<h3>
+<i>Introduction</i></h3>
+&nbsp;&nbsp;&nbsp; It was required to implement an Abstract Data Type for
+Image Histograms, both Static and Dynamic, with several operations.
+<h3>
+<i>Design</i></h3>
+&nbsp;&nbsp;&nbsp; A histogram is static when it includes antries for every
+possible pixel value. This means that no data structure adjustment is needed
+when adding a new value. It is practical when there are not too much possible
+pixel values. I decided to implement static histograms only for <b>Byte</b>
+images. The entries are stored in an <b>Array</b> with size 256, indexed
+by the pixel values. See Unsigned8ImageHistogram class.
+<p>&nbsp;&nbsp;&nbsp; A dynamic histogram only has entries for the pixel
+values actually present in the image. This makes possible to have images
+with a huge quantity of possible pixel values. For example, <b>Integer</b>
+or <b>Float</b> image pixels can have 2<sup>32</sup> different values.
+Of course, any reasonable sized image will only use a small subset, because
+the pixel count will always be much smaller than 2<sup>32</sup>. It would
+be impossible to store so huge arrays, but if the image fits in memory,
+so the dynamic histogram will do. See ImageHistogram class.
+<p>&nbsp;&nbsp;&nbsp; I also included ApproximateImageHistogram class,
+that does not keep track of every pixel value. Instead, it divides pixel
+values in groups or segments. This gives better visualization and is usually
+more useful.
+<p>See also MultiPlaneImageHistogram class.
+<br>
+<hr WIDTH="100%">
+<br><a href="ImageProcessingEng.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEng.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="TP1Eng.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+</body>
+</html>

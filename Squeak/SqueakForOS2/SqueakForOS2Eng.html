@@ -1,0 +1,83 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (Win98; U) [Netscape]">
+   <meta name="Author" content="Juan Manuel Vuletich">
+   <title>Squeak for OS/2</title>
+</head>
+<body link="#0000FF" vlink="#800080" background="bckgrnd02.jpg">
+
+<dir><b><font color="#808080"><font size=+2>Juan Manuel Vuletich's Smalltalk
+projects</font></font></b>
+<p><b><font size=+3>Squeak 3.0 for OS/2</font></b>
+<p>Vea la <a href="SqueakForOS2Esp.html">Versi&oacute;n en Espa&ntilde;ol</a>
+<br><img SRC="image3.gif" height=30 width=528>
+<p>Being completely portable, people of it's user community have ported
+it to most existing platforms. I did and mantain the Squeak OS/2 port.
+<br>&nbsp;
+<ul>
+<h3>
+Squeak for OS/2 Warp</h3>
+<b><font color="#FF0000">[UPDATED: 02/05/2001]</font></b>
+<br><img SRC="SqueakonOS2.jpg" >
+<p>This is a native, high performance Squeak port, wrote especifically
+for OS/2. It uses DIVE, a game oriented display API from IBM, that uses
+hardware acceleration to achieve fast display updates. The result is a
+quite fast Squeak even on a 486 machine.
+<p>I included a convenient mapping of several keys in the VM. Ctrl-Break
+and Esc are the interrupt keys and, Ctrl-Ins, Shft-Ins and Shft-Del manage
+the clipboard (emulating Alt-c, Alt-v and Alt-x). Besides all Squeak color
+depth are supported from 1 to 32 bit. If you select a Squeak color mode
+with more colors that your OS/2 desktop, color dithering will occur, giving
+a very good illusion of having more colors than you really have.
+<p>This version has support for sound and TCP/IP networking. It doesn't
+still have support for MIDI, serial port or joystick. I will keep enhacing
+it.
+<p><b>System requeriments</b> (If you need lower requeriments, send me
+a note. I might work on it)
+<ul>
+<li>
+Long file name support (install Squeak on a HPFS or network drive)</li>
+
+<li>
+DIVE video dlls (Installed by default by OS/2 Warp 4 Multimedia Support,
+but can be added to any OS/2)</li>
+
+<li>
+DART audio dlls (Installed when installing an audio card, but can be added
+even without one)</li>
+
+<li>
+Video mode with at least 256 colors, and support for DIVE (any driver should
+work)</li>
+</ul>
+
+<p><br><b>Files to download</b>
+<ul>
+<li>
+<a href="SqueakOS2Full.zip"><b>SqueakOS2Full.zip</b> (7.950.559 bytes)</a>
+Full Squeak 3.0 package for OS/2</li>
+
+<li>
+<a href="SqueakOS2VM.zip"><b>SqueakOS2VM.zip</b> (199.991 bytes)</a> 3.08
+Virtual Machine (With standard plugins built in)</li>
+
+<li>
+<a href="SqueakOS2VMSources.zip"><b>SqueakOS2VMSources.zip</b> (373.190
+bytes)</a> C sources for the VM</li>
+</ul>
+
+<p><br>To unzip theese files, you will need an UNZIP program or similar,
+for OS/2 or Windows, that supports long filenames. For example, this one:
+<a href="unzip.exe"><b>unzip.exe</b>
+(95Kb)</a>.
+<p>If you want to see how it was done, or want to experiment with it, you
+may also download the VM source files.</ul>
+
+<p><br><a href="../JuanEng.html">Back to Juan's studio</a>
+<p><img SRC="image3.gif" height=30 width=528>
+<br>&nbsp;</dir>
+
+</body>
+</html>

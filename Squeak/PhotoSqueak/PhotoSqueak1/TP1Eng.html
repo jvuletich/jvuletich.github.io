@@ -1,0 +1,62 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Juan Manuel Vuletich">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (Win98; U) [Netscape]">
+   <title>Image Processing</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" alink="#000088" background="back1.GIF">
+
+<center>
+<h1>
+<img SRC="Squeak2.GIF" height=60 width=86>&nbsp;&nbsp;&nbsp; PhotoSqueak
+1.0</h1></center>
+
+<div align=right>by Juan Manuel Vuletich</a></div>
+<a href="../../JuanEng.html">Back to Juan's studio</a>
+<p><a href="TP0Eng.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEng.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="TP2Eng.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+<hr WIDTH="100%">
+<center>
+<h1>
+Part 2</h1></center>
+
+<h2>
+<font size=+2>Exercise 1</font></h2>
+&nbsp;&nbsp;&nbsp; It was asked to implement the Thershold operation, and
+the binarization of an image with a threshold level. I didn't include any
+example here, but you can try them if you want.
+<h2>
+<font size=+2>Exercise 2</font></h2>
+&nbsp;&nbsp;&nbsp; It was asked to be able to apply any function to the
+pixel values of an image, and/or to the histogram, calculating the new
+image and/or histogram.
+<br><img SRC="ProcImagenes04.JPG" height=565 width=887>
+<ul>
+<li>
+Imagen Original = Original Image</li>
+
+<li>
+Resultado de aplicar f(x) = sin(x/20) = Result of applying f(x) = sin(x/20)</li>
+</ul>
+
+<h2>
+<font size=+2>Exercise 3</font></h2>
+&nbsp;&nbsp;&nbsp; It was asked to implement the convolution operation
+of two images. As this is a numerically expensive operation, I used Squeak
+C code generation, from the already tested Smalltalk code. This C code
+was compiled both as a OS/2 and as a Windows dll, that is automatically
+called if present (if it is not present, the slower Smalltalk code is invoked).
+This way, times ranging from 2 to 10 <b>minutes</b> went down to 2 to 10
+<b>seconds</b>.
+In this sample screen, it can be seen how a low pass filter emphatizes
+borders. In the center image, black or large negative values, and white
+or large positive values are boteh borders. The image on the right, is
+the center image squared. So, borders are bright white, and non-borders
+are black. Several other filters were also used.
+<p><img SRC="ProcImagenes02.gif" height=634 width=930>
+<p>
+<hr WIDTH="100%">
+<br><a href="TP0Eng.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEng.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="TP2Eng.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+</body>
+</html>

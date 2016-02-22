@@ -1,0 +1,296 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./EtoysFreeMorphic_archivos/filelist.xml">
+<title>An attempt towards a Morphic without applications</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Juan</o:Author>
+  <o:LastAuthor>Juan</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>2</o:TotalTime>
+  <o:Created>2006-10-29T17:49:00Z</o:Created>
+  <o:LastSaved>2006-10-29T17:51:00Z</o:LastSaved>
+  <o:Pages>2</o:Pages>
+  <o:Words>582</o:Words>
+  <o:Characters>3319</o:Characters>
+  <o:Company>Casa</o:Company>
+  <o:Lines>27</o:Lines>
+  <o:Paragraphs>6</o:Paragraphs>
+  <o:CharactersWithSpaces>4075</o:CharactersWithSpaces>
+  <o:Version>9.2812</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:HyphenationZone>21</w:HyphenationZone>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+tt
+	{mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Courier New";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:70.85pt 85.05pt 70.85pt 85.05pt;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:565382154;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1061694432 -1072020802 -591224756 -102564386 -1124826754 723712886 2117874792 178945856 1219162674 605324448;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+<meta name=Author content="Juan Manuel Vuletich">
+</head>
+
+<body bgcolor="#c0c0ff" lang=ES link=blue vlink=purple style='tab-interval:
+35.4pt' alink="#FF0080">
+
+<div class=Section1>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&nbsp; <o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='mso-ansi-language:EN-US'><br>
+</span><span lang=EN-US style='font-size:18.0pt;mso-ansi-language:EN-US'>Morphic
+without Etoys</span><span lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>I am a software developer,
+and want to write applications with rich and flexible GUIs. I love Squeak and
+Morphic. But I believe current Morphic (i.e. Morphic in Squeak 3.7g) has too
+much of what I'd call morphic applications, the biggest one being Etoys. So
+what I did is to take a standard 3.7g image and remove what I believe to be
+part of &quot;applications&quot; and not part of the &quot;Morphic framework&quot;.
+I also removed some non Morphic applications. Basically I removed Etoys, Flaps
+and Project Navigator, some &quot;optional&quot; morphs (including Movies,
+Books and GeeMail), Nebraska, Speech, Flash (but not Balloon), FFI, SqueakMap. SUnit
+tests, and some network stuff. <o:p></o:p></span></p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>These are the available
+files: <br>
+&nbsp;</span><a href="NoEtoysScripts-jmv.zip"><span lang=EN-US
+style='mso-ansi-language:EN-US'>Scripts (120Kb)</span></a><span lang=EN-US
+style='mso-ansi-language:EN-US'> <br>
+&nbsp;</span><a href="NoEtoysImage-jmv.zip"><span lang=EN-US style='mso-ansi-language:
+EN-US'>Image (5Mb)</span></a><span style='mso-ansi-language:EN-US'> <span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>I did this with several
+scripts, with lots of stuff taken for #majorShrink and other maintenance
+methods in Squeak. Having all the scripts will be useful to refine and modify
+this shrinking process. For example, to generate a package with all the removed
+stuff, so it can be loaded back again. <o:p></o:p></span></p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>The work is done by several
+change sets. The procedure to make the reduced image is as follows: <o:p></o:p></span></p>
+
+<ol start=1 type=1>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Take a standard Squeak 3.7-5989 image and
+     launch it. Close the three text windows. Remove the squeak logo. Empty the
+     trash can. Remove the trash can.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Open a File List. 'Install
+     a1-Fixes-jmv.6.cs'.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Install 'a2-Shrinking-jmv.35.cs'.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Close the File list. Open a Workspace. Evaluate
+     'SystemShrinker shrink' and answer yes to all questions.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Close the workspace. Close the 'Worlds of
+     Squeak' window.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>As before, install
+     'a3-aPostShrinkCleanUpA1-8.1.cs' and evaluate 'SystemShrinker
+     finalCleanup'. This step is slow. Please have patience.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Install 'a4-MorphicCleaning.17.cs'. Evaluate
+     'FileList cleanObsoleteReaders; unregisterFileReader: Morph'<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Install 'a5-MoreMorphicCleanup.2.cs'. Evaluate
+     again 'SystemShrinker finalCleanup'.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Close all windows. Save and Quit.<o:p></o:p></span></li>
+</ol>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'><br>
+The image size is 5.5Mb. The sequential order of these scripts is actually the
+order I did them, to the first ones are rather &quot;brute force&quot; and the
+last ones a more detailed work. <o:p></o:p></span></p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>The heart of all this is
+SystemShrinker &gt;&gt; shrink . It does as follows <br>
+&nbsp; <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Symbol;mso-ascii-font-family:"Times New Roman"'>·</span><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style="mso-spacerun:
+yes">&nbsp; </span></span><tt><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-ansi-language:EN-US'>&nbsp;self
+setSimplePreferences.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&quot;Some really make sense in a reduced Morphic. Others are just the way</span></tt><span
+lang=EN-US style='mso-ansi-language:EN-US'> <br>
+</span><tt><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+I like them.&quot;</span></tt><span lang=EN-US style='mso-ansi-language:EN-US'>
+<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Symbol;mso-ascii-font-family:"Times New Roman"'>·</span><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style="mso-spacerun:
+yes">&nbsp; </span></span><tt><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-ansi-language:EN-US'>&nbsp;self
+emptyWorldsOfSqueak.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&quot;Removes sample projects from the image.&quot;</span></tt><span
+lang=EN-US style='mso-ansi-language:EN-US'> <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Symbol;mso-ascii-font-family:"Times New Roman"'>·</span><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style="mso-spacerun:
+yes">&nbsp; </span></span><tt><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-ansi-language:EN-US'>&nbsp;self
+removeOtherProjects.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&quot;Delete every project but the active one.&quot;</span></tt><span
+lang=EN-US style='mso-ansi-language:EN-US'> <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Symbol;mso-ascii-font-family:"Times New Roman"'>·</span><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style="mso-spacerun:
+yes">&nbsp; </span></span><tt><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-ansi-language:EN-US'>&nbsp;self cleanUpEtoys.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&quot;Remove Etoys and User Scripting state.&quot;</span></tt><span lang=EN-US
+style='mso-ansi-language:EN-US'> <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Symbol;mso-ascii-font-family:"Times New Roman"'>·</span><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style="mso-spacerun:
+yes">&nbsp; </span></span><tt><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-ansi-language:EN-US'>&nbsp;self
+remove3D.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&quot;I don't remember if this is actually superfluous.&quot;</span></tt><span
+lang=EN-US style='mso-ansi-language:EN-US'> <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Symbol;mso-ascii-font-family:"Times New Roman"'>·</span><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style="mso-spacerun:
+yes">&nbsp; </span></span><tt><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-ansi-language:EN-US'>&nbsp;self
+removeStuffFromDiscardOddsAndEnds.&nbsp;&nbsp; &quot;A subset of what's
+there&quot;</span></tt><span lang=EN-US style='mso-ansi-language:EN-US'> <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Symbol;mso-ascii-font-family:"Times New Roman"'>·</span><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style="mso-spacerun:
+yes">&nbsp; </span></span><tt><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-ansi-language:EN-US'>&nbsp;self removeEtoysAndMorphicApplications.&nbsp;&nbsp;
+&quot;The big removal. Some of these are arguable, though&quot;</span></tt><span
+lang=EN-US style='mso-ansi-language:EN-US'> <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Symbol;mso-ascii-font-family:"Times New Roman"'>·</span><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style="mso-spacerun:
+yes">&nbsp; </span></span><tt><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-ansi-language:EN-US'>&nbsp;self
+removeSomeEtoysClasses.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&quot;A continuation of the previous one, removing classes instead of class</span></tt><span
+lang=EN-US style='mso-ansi-language:EN-US'> <br>
+</span><tt><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+categories&quot;</span></tt><span lang=EN-US style='mso-ansi-language:EN-US'> <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Symbol;mso-ascii-font-family:"Times New Roman"'>·</span><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style="mso-spacerun:
+yes">&nbsp; </span></span><tt><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-ansi-language:EN-US'>&nbsp;self
+removeAdditionalStuff.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&quot;This removes some non-Etoys stuff. If not done, subsequent scripts</span></tt><span
+lang=EN-US style='mso-ansi-language:EN-US'> <br>
+</span><tt><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(a3, a4 and a5) needs removing any activity related to this non removed
+stuff&quot;</span></tt><span lang=EN-US style='mso-ansi-language:EN-US'> <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Symbol;mso-ascii-font-family:"Times New Roman"'>·</span><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style="mso-spacerun:
+yes">&nbsp; </span></span><tt><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-ansi-language:EN-US'>&nbsp;self
+removeFlapsAndSuch.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&quot;I considered Flaps an End-User Programming tool. Probably wrong
+decision.&quot;</span></tt><span lang=EN-US style='mso-ansi-language:EN-US'> <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Symbol;mso-ascii-font-family:"Times New Roman"'>·</span><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style="mso-spacerun:
+yes">&nbsp; </span></span><tt><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-ansi-language:EN-US'>&nbsp;self
+removeExtraMorphicStuff.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&quot;Removes some incomplete of seldom used stuff (non-Etoys)&quot;</span></tt><span
+lang=EN-US style='mso-ansi-language:EN-US'> <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Symbol;mso-ascii-font-family:"Times New Roman"'>·</span><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style="mso-spacerun:
+yes">&nbsp; </span></span><tt><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";mso-ansi-language:EN-US'>&nbsp;self
+afterRemovingCleanup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&quot;This, as #finalCleanup does not remove code, but cleans various
+instances&quot;</span></tt><span lang=EN-US style='mso-ansi-language:EN-US'> <span
+style="mso-spacerun: yes">&nbsp;</span><o:p></o:p></span></p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>Any comment is welcome. <o:p></o:p></span></p>
+
+<p>Juan Vuletich </p>
+
+</div>
+
+</body>
+
+</html>

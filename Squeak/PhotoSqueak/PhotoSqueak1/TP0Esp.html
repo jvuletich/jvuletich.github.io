@@ -1,0 +1,172 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Juan Manuel Vuletich">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (Win98; U) [Netscape]">
+   <title>Procesamiento de Imagenes</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" alink="#000088" background="back1.GIF">
+
+<center>
+<h1>
+<img SRC="Squeak2.GIF" height=60 width=86>&nbsp;&nbsp;&nbsp; Introducci&oacute;n
+al Procesamiento de Im&aacute;genes</h1></center>
+
+<div align=right>por <a href="mailto:jvuletic@dc.uba.ar">Juan Manuel Vuletich</a></div>
+<a href="../../JuanEsp.html">Volver al estudio de Juan</a>
+<p><a href="ImageProcessingEsp.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEsp.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="TP1Esp.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+<hr WIDTH="100%">
+<center>
+<h1>
+Trabajo Pr&aacute;ctico 0</h1></center>
+
+<h2>
+<img SRC="ProcImagenes03.JPG" height=624 width=826></h2>
+
+<h2>
+<font size=+2>Ejercicio 1</font></h2>
+
+<h3>
+<i>Introducci&oacute;n</i></h3>
+&nbsp;&nbsp;&nbsp; Se solicito implementar un Tipo de Dato Abstracto para
+manejar im&aacute;genes, incluyendo la implementacion de un conjunto de
+operaciones. Eleg&iacute; desarrollar en Smalltalk porque facilita el desarrollo
+r&aacute;pido, con c&oacute;digo compacto y modularizado, y por el poderoso
+ambiente de desarrollo que proporciona.
+<h3>
+<i>Requerimientos</i></h3>
+&nbsp;&nbsp;&nbsp; Se requiere manejar im&aacute;genes bidimensionales,
+donde los valores de los pixels pueden ser <b>Enteros, Reales o Bytes</b>
+(que valen entre 0 y 255). Tambi&eacute;n es necesario manejar imagenes
+donde los pixels son <b>vectores</b> (de la misma dimensi&oacute;n para
+todos los pixeles de una imagen), de cualquiera de los tipos citados. Estas
+&uacute;ltimas tambi&eacute;n pueden considerarse como compuestas por varias
+<b>"bandas"
+o "planos"</b> con pixeles escalares. Tambi&eacute;n pueden entenderse
+como im&aacute;genes tridimensionales, con coordenadas <b>(x, y, z)</b>.
+Los distintos m&eacute;todos implementados permiten considerar a las im&aacute;genes
+de pixeles vectoriales de cualquiera de estas maneras.
+<h3>
+<i>Dise&ntilde;o</i></h3>
+&nbsp;&nbsp;&nbsp; La primera decisi&oacute;n de dise&ntilde;o tomada fue
+utilizar para el almacenaje de los pixels un <b>Array</b> ya preparado
+para el tipo de dato de los pixels escalares. Esto significa almacenar
+en cada posici&oacute;n del array exactamente un pixel. Entonces, usamos
+una instancia de I<b>ntegerArray, FloatArray o ByteArray</b> para &eacute;sto.
+Esto nos permite que una sola clase <b>Image</b> pueda manejar los tipos
+de pixels (escalares) necesarios, en vez de hacer falta implementar tres
+clases distintas. Solo es necesario decir el tipo a utilizar al construir
+el objeto Image. En todos los casos, el pixel <b>(x, y)</b> se almacena
+en la posici&oacute;n <b>((y-1) * width + x)</b> del array.
+<p>&nbsp;&nbsp;&nbsp; Para las im&aacute;genes vectoriales desarrollollamos
+una subclase de <b>Image</b> llamada <b>MultiPlaneImage</b>. Esto es as&iacute;
+porque una imagen de pixels vectoriales ES UNA imagen. La relaci&oacute;n
+ES UN(A) es lo que define la herencia en Smalltalk. Esto permite heredar
+tanto el protocolo como la implementaci&oacute;n de la superclase. Dado
+que <b>MultiPlaneImage</b> ya hereda la variable de instancia donde almacenar
+los pixels, almacenamos todos los pixels en el mismo array, ubicando el
+pixel <b>(x, y, z)</b> en la posici&oacute;n <b>((y-1) * width + (x-1))
+* planeCount + z </b>del array, donde las coordenadas comienzan en 1, asi
+como la indexaci&oacute;n del array.
+<p>&nbsp;&nbsp;&nbsp;&nbsp; Con referencia al iterador, se solicitaba que
+reciba una funci&oacute;n. En Smalltalk es usual para &eacute;sto el uso
+de <b>Bloques</b>. No es preciso que el bloque tome como par&aacute;metro
+la imagen en cuesti&oacute;n, sino s&oacute;lo las coordenadas de cada
+pixel. La implementaci&oacute;n que hicimos permite, por ejemplo:
+<p><font face="Courier New"><font color="#003300">anImage xyIndexesDo:
+[ :x :y |</font></font>
+<br><font face="Courier New"><font color="#003300">&nbsp;&nbsp;&nbsp; anImage</font></font>
+<br><font face="Courier New"><font color="#003300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+atX: x y: y</font></font>
+<br><font face="Courier New"><font color="#003300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+put: ((anImage atX: x y: y)procesadoDeAlgunaManera) ].</font></font>
+<p>este segmento de c&oacute;digo opera tanto sobre imagenes escalares
+como sobre los pixels vectoriales de una imagen vectorial. Si, por el contrario,
+se desea operar sobre las componenetes escalares de una imagen vectorial,
+es posible:
+<p><font face="Courier New"><font color="#003300">anImage xyzIndexesDo:
+[ :x :y :z |</font></font>
+<br><font face="Courier New"><font color="#003300">&nbsp;&nbsp;&nbsp; anImage</font></font>
+<br><font face="Courier New"><font color="#003300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+atX: x</font></font>
+<br><font face="Courier New"><font color="#003300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+y: y</font></font>
+<br><font face="Courier New"><font color="#003300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+z: z</font></font>
+<br><font face="Courier New"><font color="#003300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+put: ((anImage atX:x y:y z:z)procesadoDeAlgunaManera) ].</font></font>
+<p>este segmento de c&oacute;digo opera &uacute;nicamente sobre imagenes
+vectoriales
+<p>&nbsp;&nbsp;&nbsp; Para mostrar por pantalla las im&aacute;genes escalares
+de tipo <b>Byte</b>, los pixels se consideran tonos de gris. Para las imagenes
+<b>Float</b>,
+se hace stretching para adaptar el rango de los pixels realmente contenidos
+en la imagen a tonos de gris. Para las <b>Integer</b>, se toma la parte
+mas significativa como rojo, la del centro como verde, y la menos significativa
+como azul. Para mostrar por pantalla las im&aacute;genes vectoriales, se
+puede tomar 3 bandas como componentes Rojo, Verde y Azul, o tomar la norma
+de los vectores como tonos de gris. En ambos casos, la implementaci&oacute;n
+lo que hace es solicitar mostrar por pantalla una imagen color de 32 bits,
+que es manejada por la m&aacute;quina virtual del Smalltalk, para mostrarla
+sobre la pantalla realmente disponible. En este sentido, cabe mencionar
+que yo soy el implementador de la m&aacute;quina virtual de Squeak para
+el sistema operativo OS/2. Esto incluye la conversi&oacute;n de las distintas
+profundidades de color a la disponible en la pantalla f&iacute;sica, incluyendo
+modos de video paletizados, y t&eacute;cnicas de dithering para dar la
+ilusi&oacute;n de m&aacute;s colores que los efectivamente disponibles.
+<p>&nbsp;&nbsp;&nbsp; Implementamos los m&eacute;todos correspondientes
+a las operaciones solicitadas. Asimismo se implement&oacute; la lectura
+y grabaci&oacute;n de los formatos de archivo solicitados. Tambi&eacute;n
+es posible leer archivos en formato <b>BMP</b>, <b>GIF</b> y <b>JPG</b>.
+Se incluy&oacute; en los comentarios de ambas clases una selecci&oacute;n
+de ejemplos que ilustran el funcionamiento de las operaciones solicitadas.
+Implementamos tambi&eacute;n una interfaz al usuario para interactuar con
+las imagenes. Esta interfaz, juntamente con las clases Image y MultiPlaneImage
+ya descriptas, puede la base de una aplicaci&oacute;n completa para el
+procesamiento de im&aacute;genes.
+<h2>
+<font size=+2>Ejercicio 2</font></h2>
+
+<h3>
+<i>Introducci&oacute;n</i></h3>
+&nbsp;&nbsp;&nbsp; Se solicito implementar un Tipo de Dato Abstracto para
+manejar histogramas de im&aacute;genes, tanto est&aacute;ticos como din&aacute;micos,
+incluyendo la implementacion de un conjunto de operaciones.
+<h3>
+<i>Dise&ntilde;o</i></h3>
+&nbsp;&nbsp;&nbsp; Un histograma es est&aacute;tico cuando incluye entradas
+para todos los valores de los pixels posibles. Esto significa que al modificarse
+las entradas no ser&aacute; necesario ajustar estructuras de datos. Resulta
+pr&aacute;ctico cuando los valores posibles de los pixels no son muchos.
+Nosotros decidimos implementar histogramas est&aacute;ticos &uacute;nicamente
+para im&aacute;genes con pixels <b>Byte</b>. Las entradas se guardan en
+un <b>Array</b> de 256 entradas, indexado por el valor de los pixels.
+<p>&nbsp;&nbsp;&nbsp; Un histograma din&aacute;mico incluye entradas &uacute;nicamente
+para los valores de los pixels realmente presentes en una imagen. Esto
+hace posible manejar histogramas de im&aacute;genes con gran cantidad de
+valores posibles. Por ejemplo, las im&aacute;genes <b>Integer</b> o <b>Float</b>
+pueden tener 2<sup>32</sup> valores posibles. Es claro que una imagen de
+tama&ntilde;o razonable utilizar&aacute; &uacute;nicamente un subconjunto
+peque&ntilde;o de estos valores, ya que la cantidad de pixels sera mucho
+menor a 2<sup>32</sup>. Adicionalmente, resulta imposible manejar arreglos
+de este tama&ntilde;o, pero si la imagen entra en memoria, un histograma
+din&aacute;mico tambi&eacute;n ser&aacute; manejable. Sin embargo, la implementaci&oacute;n
+de histogramas din&aacute;micos resulta m&aacute;s trabajosa, necesit&aacute;ndose
+recurrir a una tabla de hash. En mi implementaci&oacute;n us&eacute; una
+instancia de la clase Dictionary, que es justamente una tabla de hash.
+<p>&nbsp;&nbsp;&nbsp; La implementaci&oacute;n la hice en dos clases, ImageHistogram
+y una subclase llamada StaticImageHistogram. ImageHistogram es un histograma
+din&aacute;mico, y acepta <i>cualquier objeto</i> como posible valor de
+los pixels. StaticImageHistogram hereda de ella, y redefine los m&eacute;todos
+necesarios para funcionar como histograma est&aacute;tico, &uacute;nicamente
+para im&aacute;genes con pixels de tipo <b>Byte</b>, por las razones ya
+expuestas.
+<p>&nbsp;&nbsp;&nbsp; Implementamos tambi&eacute;n una interfaz al usuario
+atractiva, integrada a la realizada para manejar las im&aacute;genes y
+accesible desde ella, que permite visualizar el histograma de una imagen.
+<p>
+<hr WIDTH="100%">
+<br><a href="ImageProcessingEsp.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEsp.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="TP1Esp.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+</body>
+</html>

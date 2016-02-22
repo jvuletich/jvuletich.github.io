@@ -1,0 +1,88 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Juan Manuel Vuletich">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (Win98; U) [Netscape]">
+   <title>Morphic</title>
+</head>
+<body text="#000000" bgcolor="#FFF0F0" link="#FF0000" vlink="#800080" alink="#0000FF">
+
+<center>
+<h1>
+<img SRC="Squeak2.GIF" height=60 width=86>&nbsp;&nbsp;&nbsp; Morphic Sample
+- The Scrabble Game</h1></center>
+
+<div align=right>by Juan Manuel Vuletich</a></div>
+&nbsp;
+<hr WIDTH="100%">
+<p>This is a Morphic Sample Application. It shows how a real Morphic application
+can be built using the Classic style. Sometime, I plan to write a Morphic
+tutorial on how the main morphs were made.
+<center>
+<p><img SRC="display.gif" height=585 width=621></center>
+
+<h2>
+Description</h2>
+This is a Scrabble game for several players. It was originally developed
+as a laboratoy exercise for the Software Engineering course at the Buenos
+Aires University. The machine will not play, but it controls the turns,
+the words in the board, the scores, etc. It runs in Squeak. Each player
+plays from his PC, and they must be connected via TCP/IP to a Server. So,
+we have two different programs, the Client and the Server. The Server runs
+inside a Transcript and has no GUI. The Client is Morphic.
+<h2>
+The Morphs</h2>
+If you are just interested in Morphic programming, download client.zip,
+and file in all the .st files.
+<br>Now add a ScrabbleTileMorph and several ScrabbleBoardBoxMorphs. You
+can resize the boxes to different sizes, and drag&amp;drop the tile from
+one to another, and see how the tile adapts to its owner.
+<br>Now add a ScrabbleBoardMorph, and enlarge it. You can also drop a tile
+in its boxes. Resize it. The boxes and tiles resize themselves again.
+<br>Add another ScrabbleBoardMorph. Before expanding it, open an inspector
+and evaluate <b><font color="#CC33CC">self boardSize: 25@25</font></b>
+and <b><font color="#CC33CC">self addScrabbleBoardBoxes</font></b>. Now
+expand it. This is how a 12 player board looks like.
+<br>&nbsp;
+<h2>
+Download</h2>
+You can choose to use full dictionaries or a reduced version of them. The
+full ones make the game much more enjoyable.
+<p><a href="server.zip">Server.zip</a> (11 kBytes)
+<br><a href="client.zip">Client.zip</a> (11 kBytes)
+<br><a href="dics.zip">Dics.zip</a> (1084 kBytes) or <a href="smalldics.zip">SmallDics.zip</a>
+(62 kBytes)
+<h2>
+Installing</h2>
+1- It is necessary to start (at least) 3 simultaneous Squeak sessions.
+It can be done in 3 (or more) networked machines, or in the same machine.
+Each session must come from a copy of Squeak in a different directory.
+Call one of the sessions the Server, and the others Client1 to ClientN.
+The machines need to have TCP/IP support.
+<p>2- Copy all the server files to its directory, and the client's to their
+directories. Copy a set of dictionary files only to the server's directory.
+In every session open a fileList, and fileIn all the *.st files in the
+directory.
+<h2>
+Playing</h2>
+1- In the Server, open a Transcript (not a workspace) and do "ClientManager
+current start". This will read the available dictionaries, and will start
+ths Server. The Server stops clicking with the mouse.
+<p>2- In each Client, open a Morphic project, and do "New Morph..." "Scrabble"
+"LoginMorph". This will open a Login window, where we must enter the IP
+address the Server showed us in the Transcript, with a name and a password.
+<p>3- Once we get in the "Virtual playroom", one of the players must create
+a game , choosing a language and a dictionary from the available ones.
+Enter the number of players.
+<p>4- The other players can then enter the juste created game. When all
+the necesary players are ready, the game starts.
+<p>5- To play, drop some letters in the board (the other players see each
+letter you move, just like with a real board) and click on "Confirm". If
+you prefer to change some of your letters, drop them in the "Tile Discarder"
+and click on "Exchange". If you prefer to pass your turn to the next player,
+click on "Pass".
+<p>6- The usual rules for Scrabble are used.
+<p>7- Have fun.
+</body>
+</html>

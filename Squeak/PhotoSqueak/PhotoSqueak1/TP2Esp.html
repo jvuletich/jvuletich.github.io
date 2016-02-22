@@ -1,0 +1,225 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Juan Manuel Vuletich">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (Win98; U) [Netscape]">
+   <title>Procesamiento de Imagenes</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" alink="#000088" background="back1.GIF">
+
+<center>
+<h1>
+<img SRC="Squeak2.GIF" height=60 width=86>&nbsp;&nbsp;&nbsp; Introducci&oacute;n
+al Procesamiento de Im&aacute;genes</h1></center>
+
+<div align=right>por <a href="mailto:jvuletic@dc.uba.ar">Juan Manuel Vuletich</a></div>
+<a href="../../JuanEsp.html">Volver al estudio de Juan</a>
+<p><a href="TP1Esp.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEsp.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="TP3y4Esp.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+<hr WIDTH="100%">
+<center>
+<h1>
+Trabajo Pr&aacute;ctico&nbsp;<b><font face="Arial"> 2</font></b></h1></center>
+
+<h2>
+<b><font face="Arial">Ejercicio 1</font></b></h2>
+
+<h3>
+<i><font face="Arial">Introducci&oacute;n</font></i></h3>
+Se solicit&oacute; implementar la ecualizaci&oacute;n del histograma de
+una imagen, y comparar im&aacute;genes e histogramas antes y despu&eacute;s.
+<h3>
+<img SRC="ProcImagenes05.JPG" height=506 width=998></h3>
+
+<h3>
+<b><i><font face="Arial">Desarrollo</font></i></b></h3>
+&nbsp;&nbsp;&nbsp; Implement&eacute; la ecualizaci&oacute;n del histograma
+para im&aacute;genes de una sola banda (monocrom&aacute;ticas). Se observ&oacute;
+que el resultado es mejorar el contraste significativamente (m&aacute;s
+que haciendo stretching). Sin embargo, en im&aacute;genes que utilicen
+muchos de los tonos de gris disponibles, y con degrad&eacute;s suaves (por
+ejemplo Lena), puede ocurrir que el resultado sea usar una cantidad menor
+de tonos, haciedo que los degrad&eacute;s sean m&aacute;s toscos. Si esto
+ocurre con una imagen que adem&aacute;s ya ten&iacute;a un contraste adecuado
+(como en este caso), es posible que la imagen procesada no supere en calidad
+a la original. Por contrapartida, en im&aacute;genes que presentan un contraste
+deficiente, el realce es notable.
+<p>&nbsp;&nbsp;&nbsp; Posteriormente intent&eacute; aplicar la t&eacute;cnica
+a im&aacute;genes multibanda (en color). Para &eacute;sto, ecualic&eacute;
+independiente el histograma de cada banda. El resultado puede no ser satisfactorio,
+porque las componenetes de color de cada pixel son modificadas independientemente,
+y el matiz de color de cada pixel puede cambiar. Por ejemplo, con im&aacute;genes
+que inclu&iacute;an personas y un cielo azul claro, al ecualizar el histograma
+del azul se disminuye la cantidad de este color en los rostros (por la
+gran cantidad de azul claro en el cielo) y se incrementa la cantidad de
+color rojo (debido a que casi no hay rojo en otra &aacute;rea de la imagen).
+El resultado es que la piel se vuelve rojiza. La magnitud de este efecto
+depende de qu&eacute; objetos haya en la imagen que se ver&iacute;an artificiales
+si su color cambia, y del balance general entre los colores. De cualquier
+manera, si lo que se busca es mejorar el contraste, a&uacute;n a costa
+del verdadero color de cada pixel, el resultado es satisfactorio.
+<p>&nbsp;&nbsp;&nbsp; Pens&eacute; entonces que podr&iacute;a ser interesante
+una t&eacute;cnica similar, pero que no afecte el matiz de color de cada
+pixel, sino s&oacute;lo su luminosidad. O sea, al modificar un color, multiplicar
+por el mismo factor todas sus componentes. Para &eacute;sto, obtuve el
+histograma de la norma (utilic&eacute; norma 2) de la imagen. La ecualizaci&oacute;n
+se realiza con &eacute;ste histograma, afectando id&eacute;nticamente todas
+las bandas. El resultado es una imagen en que cada pixel tiene el mismo
+balance entre las componenetes de color que en la imagen original, pero
+cuyo histograma de la norma est&aacute; ecualizado. Lo que se observa es
+similar a la ecualizaci&oacute;n de im&aacute;genes monocrom&aacute;ticas:
+el contraste est&aacute; fuertemente realzado, pero los colores aparecen
+todav&iacute;a naturales.
+<p>&nbsp;&nbsp;&nbsp; La implementaci&oacute;n presentada incluye ambos
+tipos de ecualizaci&oacute;n, y la posibilidad de ver el histograma convencional
+y el de la norma.
+<h1>
+<img SRC="ProcImagenes06.JPG" height=672 width=949></h1>
+
+<h1>
+<b><font face="Arial"><font size=+2>Ejercicio 2</font></font></b></h1>
+
+<h2>
+<b><i><font face="Arial"><font size=+1>Introducci&oacute;n</font></font></i></b></h2>
+&nbsp;&nbsp;&nbsp; Se solicit&oacute; realizar la clasificaci&oacute;n
+por m&iacute;nimos locales de una imagen. Se pidi&oacute; mostrar el histograma,
+indicando los m&iacute;nimos encontrados; as&iacute; como generar una imagen
+que tenga un &uacute;nico valor para todos los pixels inclu&iacute;dos
+en la clase.
+<h2>
+<b><i><font face="Arial"><font size=+1>Desarrollo</font></font></i></b></h2>
+&nbsp;&nbsp;&nbsp; Se obtiene el histograma "suavizado" de la imagen. El
+histograma suavizado se obtiene aplicando un filtro pasa bajos al histograma
+original. Esto es, promediando el valor de cada punto con un conjunto de
+vecinos. El resultado es una curva suave, sin cambios abruptos, y que presenta
+m&iacute;nimos y m&aacute;ximos locales que respetan al histograma original,
+que s&oacute;lo incluye aquellos m&aacute;s evidentes, que "dominan" la
+curva.
+<p>&nbsp;&nbsp;&nbsp; Dado que estamos trabajando con una se&ntilde;al
+discreta, en vez de aproximar la derivada, considero que un punto es un
+m&iacute;nimo local si su valor es menor que el de su vecino izquierdo
+y menor o igual que su vecino derecho. (Hubiera sido posible tambi&eacute;n
+considerar a los vecinos al rev&eacute;s.) Con las im&aacute;genes con
+las que prob&eacute; el resultado fue satisfactorio.
+<p>&nbsp;&nbsp;&nbsp; La t&eacute;cnica utilizada no funciona cuando se
+usa con un histograma din&aacute;mico, porque podr&iacute;a pasar que un
+m&iacute;nimo local sea simplemente valores para los que no hay ning&uacute;n
+pixel, y tomando &uacute;nicamente los valores de gris para los que hay
+pixels, el m&iacute;nimo no sea detectado, y se junten por error dos clases.
+Por &eacute;sto, y por problemas detectados y comentados en el ejercicio
+siguiente, decid&iacute; implementar los que llam&eacute; Histogramas Aproximados.
+Estan descritos en detalle en el ejercicio siguiente.
+<p>&nbsp;&nbsp;&nbsp; La imagen de clasificaci&oacute;n generada se hace
+de tipo Float, ya que mi implementaci&oacute;n hace siempre stretching
+a los valores apropiados en la pantalla, y ayuda a que cada clase se distinga
+visualmente.
+<p>&nbsp;&nbsp;&nbsp; Finalmente, no implement&eacute; la clasificaci&oacute;n
+por m&iacute;nimos locales par im&aacute;genes multibanda (o en color).
+Esto exigir&iacute;a encontrar m&iacute;nimos en un espacio multidimensional,
+con la posibilidad de que un punto se m&iacute;nimo en un coordenada y
+no en otra. Incluso podr&iacute;a ser m&aacute;ximo en un punto de ensilladura.
+Este problema requiere mayor estudio para poder ser atacado.
+<br><img SRC="ProcImagenes07.JPG" height=593 width=866>
+<h1>
+<b><font face="Arial"><font size=+2>Ejercicio 3</font></font></b></h1>
+
+<h2>
+<b><i><font face="Arial"><font size=+1>Introducci&oacute;n</font></font></i></b></h2>
+Se solicit&oacute; implementar la generaci&oacute;n de im&aacute;genes
+de ruido aleatorio con diversas distribuciones.
+<h2>
+<b><i><font face="Arial"><font size=+1>Desarrollo</font></font></i></b></h2>
+&nbsp;&nbsp;&nbsp; Primeramente implement&eacute; un generador de ruido
+de distribuci&oacute;n normal, basado en el m&eacute;todo de Box-M&uuml;ller.
+A continuaci&oacute;n implement&eacute; la generacion de imagenes de ruido.
+Para im&aacute;genes multibanda, la generaci&oacute;n de ruido en cada
+banda es independiente. Al intentar mostrar los histogramas de im&aacute;genes
+Float, se hizo evidente la necesidad de los Histogramas Aproximados, ya
+que debido a la gran cantidad de valores distintos generados, el histograma
+din&aacute;mico resulta impracticable. No entrar&iacute;a en memoria, y
+cada entrada tendr&iacute;a quiz&aacute;s un &uacute;nico pixel. Lo que
+necesitamos es en realidad conocer la "densidad" del histograma en intervalos
+de valores.
+<p>&nbsp;&nbsp;&nbsp; Un Histograma Aproximado es un h&iacute;brido entre
+un histograma est&aacute;tico y uno din&aacute;mico, y resulta de gran
+utilidad para im&aacute;genes de tipo Float. Se toma el rango de valores
+entre el m&iacute;nimo y el m&aacute;ximo de los valores utilizados por
+la imagen, y se lo divide en intervalos de igual longitud. La cantidad
+de intervalos a tomar es proporcionada al construir el histograma. (Alternativamente,
+es posible informar en la longitud de cada intervalo, y la cantidad de
+ellos necesaria es calculada autom&aacute;ticamente). Los valores de los
+pixels se hacen corresponder con el intervalo en el que se encuentren.
+De esta manera, lo que se cuenta es la cantidad de pixels cuyo valor se
+encuentre en cada intervalo. El resultado es un histograma que al mostrarse
+por pantalla resulta m&aacute;s realista que el histograma din&aacute;mico
+(que es dif&iacute;cil de graficar, y cuya forma ideal de mostrarse por
+pantalla es justamente lo que hace el Histograma Aproximado, que muestra
+la "densidad" del histograma din&aacute;mico).
+<p>&nbsp;&nbsp;&nbsp; De esta manera es posible observar que las im&aacute;genes
+generadas corresponden a la distribuci&oacute;n correspondiente.
+<br><img SRC="ProcImagenes08.JPG" height=593 width=906>
+<h1>
+<b><font face="Arial"><font size=+2>Ejercicio 4</font></font></b></h1>
+
+<h2>
+<b><i><font face="Arial"><font size=+1>Introducci&oacute;n</font></font></i></b></h2>
+&nbsp;&nbsp;&nbsp; Se solicit&oacute; contaminar con ruido Salt &amp; Pepper,
+Aditivo y Multiplicativo y con diversas distribuciones a las im&aacute;genes
+de prueba. Se pidi&oacute; tambi&eacute;n probar con distintos porcentajes
+de contaminaci&oacute;n. A continuaci&oacute;n se solicit&oacute; aplicar
+diversos filtros y sacar conclusiones.
+<h3>
+<b><i><font face="Arial">Desarrollo</font></i></b></h3>
+&nbsp;&nbsp;&nbsp; La contaminaci&oacute;n de una imagen con ruido Salt
+&amp; Pepper toma un par&aacute;metro de la forma: #(10 0 255) donde el
+primer n&uacute;mero indica el porcentaje de contaminaci&oacute;n (cantidad
+total de pixels a ser afectados) y el segundo y tercer n&uacute;meros indican
+dos valores de contaminaci&oacute;n, eligi&eacute;ndose aleatoriamente
+entre ellos para contaminar.
+<p>&nbsp;&nbsp;&nbsp; Para contaminar con ruido Aditivo o Multiplicativo,
+primero debe generarse la imagen de ruido con la distribuci&oacute;n deseada,
+y luego sumarse o multiplicarse ambas im&aacute;genes. Si se desea contaminar,
+por ejemplo, el 10% de la imagen, aplicar a la imagen de ruido un Salt&amp;Pepper
+de #(90 0 0) si es ruido aditivo o #(90 1 1) si es multiplicativo. Debe
+tenerse en cuenta que la distribuci&oacute;n de esta imagen ya no es la
+distribuci&oacute;n original, y que si se est&aacute; simulando el ruido
+producido por alg&uacute;n dispositivo f&iacute;sico es necesario saber
+si las caracter&iacute;sticas del ruido que se desea imitar realmente responden
+a la distribuci&oacute;n obtenida.
+<h4>
+<font face="Arial">Salt and Pepper</font></h4>
+&nbsp;&nbsp;&nbsp; Al aplicarle el filtro de la mediana, el ruido desaparece
+casi por completo. Al aplicarle un pasa bajos, cada defecto (pixel err&oacute;neo)
+se ‘lava’, suaviz&aacute;ndose, pero al mismo tiempo aumentando de tama&ntilde;o.
+Al aplicarle un pasa altos, como coment&eacute; en el trabajo pr&aacute;ctico
+anterior, la imagen parece cobrar relieve. Los defectos se transforman
+ahora en huecos o salientes en la imagen. Al aplicale un pasa bajos primero
+y un pasa altos despu&eacute;s, el resultado es similar a aplicar &uacute;nicamente
+el pasa altos, pero la imagen queda borrosa.
+<h4>
+<font face="Arial">Aditivo Normal</font></h4>
+&nbsp;&nbsp;&nbsp; Al aplicarle un filtro pasa bajos el ruido se suaviza
+bastante (m&aacute;s que en el Salt and Pepper). Al aplicarle el filtro
+de la mediana, si el porcentaje de contaminaci&oacute;n es bajo, el ruido
+desaparece por completo. Pero si el porcentaje de contaminaci&oacute;n
+es alto, el ruido no disminuye, y se obtienen mejores resultados con un
+pasa bajos. Al aplicar un pasa altos, el resultado es similar al Salt and
+Pepper. Al aplicarle un pasa bajos y luego un pasa altos, la imagen de
+"relieve" resultante parece tener rugosidad debido al ruido, pero muy suavizado.
+<h4>
+<font face="Arial">Aditivo Uniforme</font></h4>
+&nbsp;&nbsp;&nbsp; Los resultados son intermedios entre los de Salt and
+Pepper y los de Aditivo Normal.
+<h4>
+<font face="Arial">Multiplicativo Normal</font></h4>
+&nbsp;&nbsp;&nbsp; Tomando una media de 1 y una varianza de 0,3, los resultados
+obtenidos son en todos los casos muy similares al caso aditivo normal.
+Tomando en cambio una varianza de 10, los resultados son a&uacute;n distinguibles
+a simple vista, pero ninguno de los filtros mejora la imagen. Para hacer
+una an&aacute;lisis m&aacute;s detallado es necesario conocer las caracter&iacute;sticas
+del ruido que es esperable tener en la pr&aacute;ctica.
+<p>
+<hr WIDTH="100%">
+<br><a href="TP1Esp.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEsp.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="TP3y4Esp.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Juan Manuel Vuletich">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (Win98; U) [Netscape]">
+   <title>Morphic</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" alink="#000088" background="back1.GIF">
+
+<center>
+<h1>
+<img SRC="Squeak2.GIF" height=60 width=86>&nbsp;&nbsp;&nbsp; Morphic -
+The Squeak User Interface</h1></center>
+
+<div align=right>by Juan Manuel Vuletich</a></div>
+<a href="../JuanEng.html">Back to Juan's studio</a>
+<p><a href="Morphic-Styles-Classic.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="Morphic.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="Morphic-Styles-Fabrik.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+<hr WIDTH="100%">
+<h2>
+Pluggable Views in Morphic (Pluggable Morphs)</h2>
+Some morphs were created to allow the old MVC browsers and inspectors work
+in a Morphic world. This was done replacing MVC pluggable views with these
+new pluggable morphs. What this means, is that for this style, it is not
+necessary to create new Morph classes. The style is similar to the old
+MVC Pluggable Views. This was a great way to have the necessary tools to
+do further development, but in my opinion, it is only worth using this
+style if MVC compatibility is required. Classic Morphic gives much you
+more flexibility and allows better designs.
+<p>The Pluggable Morph classes are: PluggableButtonMorph, PluggableListMorph,
+PluggableListMorphByItem, PluggableListMorphOfMany, PluggableMessageCategoryListMorph,
+PluggableTextMorph, PluggableTextMorphWithModel. To see how they are used,
+you can check the class Browser and its hierarchy. These browsers work
+both in MVC and in Morphic, and choose between PluggableViews and PlugabbleMorphs.
+<br>
+<hr WIDTH="100%">
+<br><a href="Morphic-Styles-Classic.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="Morphic.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="Morphic-Styles-Fabrik.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+</body>
+</html>

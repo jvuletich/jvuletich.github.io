@@ -1,0 +1,50 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Juan Manuel Vuletich">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (Win98; U) [Netscape]">
+   <title>Procesamiento de Imagenes</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" alink="#000088" background="back1.GIF">
+
+<center>
+<h1>
+<img SRC="Squeak2.GIF" height=60 width=86>&nbsp;&nbsp;&nbsp; Introducci&oacute;n
+al Procesamiento de Im&aacute;genes</h1></center>
+
+<div align=right>por <a href="mailto:jvuletic@dc.uba.ar">Juan Manuel Vuletich</a></div>
+<a href="../../JuanEsp.html">Volver al estudio de Juan</a>
+<p><a href="TP3y4Esp.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEsp.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a>
+<hr WIDTH="100%">
+<center>
+<h2>
+<font size=+3>Download</font></h2></center>
+<a href="Imagenes.zip">Imagenes.zip</a> (6.9 Mb) Un paquete completo, que
+incluye todo lo que necesitas para usar PhotoSqueak en Windows. Est&aacute;
+basado en Squeak 2.7. S&oacute;lo tienes que descompactar, y ejecutar Squeak.exe.
+Si no est&aacute;s utilizando Windows, debes reemplazar Squeak.exe por
+la M&aacute;quina Virtual apropiada para tu plataforma, y borrar todas
+las dlls. Si bajas este archivo, no necesitas ninguno de los otros.
+<p><a href="Source.zip">Source.zip</a> (31 Kb) Codigo fuente del proyecto,
+para ser cargado en <a href="http://www.squeak.org">Squeak</a> 2.7. Incluye
+el fuente para generar las dlls. En versiones m&aacute;s nuevas de Squeak
+da un error porque no existe la clase QuickPrint. Si esto te pasa, en
+<br>BorderedPopUpChoiceMorph >> fitContents reemplazar
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QuickPrint on: Display box:
+Display boundingBox font: self fontToUse
+<br>por
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DisplayScanner quickPrintOn:
+Display box: Display boundingBox font: self fontToUse
+<br>&nbsp;
+<p><a href="OS2Dlls.zip">OS2Dlls.zip</a> (34 Kb) Dlls de procesamiento
+de im&aacute;genes, para OS/2 (No son imprescindibles, pero mejoran la
+performance).
+<p><a href="WinDlls.zip">WinDlls.zip</a> (47 Kb) Dlls de procesamiento
+de im&aacute;genes, para Windows (No son imprescindibles, pero mejoran
+la performance).
+<p>
+<hr WIDTH="100%">
+<br><a href="TP3y4Esp.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEsp.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a>
+</body>
+</html>

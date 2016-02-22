@@ -1,0 +1,79 @@
+Cuis Release notes - Only the most relevant Cuis specific changes are detailed here. To see all of them, browse the numbered changes themselves, that are part of this release. Cuis official site is http://www.jvuletich.org/Cuis/Index.html .
+
+New in Cuis 2.8
+- Fixes to Character sorting and testing methods, to honor ISO-8859-15 encoding- Better conversion to/from UTF-8- Faster startup (forked DateAndTime class>>startup)- Honor quit signals from the OS (from Squeak)- #findBinary:do:ifNone: and #findBinaryIndex:do:ifNone: in SequenceableCollection- PointerTracingTools by Matthew Fulmer- Many recent tweaks from Squeak- Tweaks to blinking cursors- Tweaks to LayoutSpecs and PluggableMorphs- Tweaks to Editors
+
+New in Cuis 2.7
+- Morphic. New LayoutSpec mechanism. Simpler and nicer.
+- Morphic Simplification: Layout, Extensions, etc
+- Various fixes to the Text subsystem (Empty lines, Clipboard, Blinking Cursor)
+- Compiler / Decompiler / Debugger update to Squeak's
+- Numerics update to Squeak's (thanks Nicolas!), including tests. Misc additional tweaks and enh
+- Various fixes and enh to FileList (ascending/descending sort, formatting of columns, hiding hidden files)
+- Enhancements to PrettyPrint. PrettyPrinted code looks much better now.
+- Fixes to MessageNames, senders of specialSelectors (#ifNil, etc)
+- Style enh. Cleaning of 'asSortedCollection sort', etc.
+- Updates and Enhancements from Squeak (Inspectors, SocketStream, Socket, Zip, Rectangle, Duration, Time)
+- Minor tweaks from Squeak
+- Better handling of EndiannessCache (could be great for Squeak too)
+
+New in Cuis 2.6
+- Loaded BlockContext code again. Still needed for debugging.
+- Tweaks to decompiler, to avoid test failures.
+- Tests updates from Squeak
+- FFT now uses the fast primitive by default
+- A few updates from Squeak
+- Several minor fixes and enhancements
+
+New in Cuis 2.5
+- Compatibility with the Cog VM
+- Fix the sequence of click - wait - double click in text editors (old Squeak bug)
+- Fix formatting bugs in a trailing empty line in text editors (old Squeak bug)
+- A few updates from Squeak
+- Several minor fixes and enhancements
+
+New in Cuis 2.4
+- Adaptive Morphic CPU usage. Saves a lot of CPU on servers running many images.
+- Compiler update with Eliot's fixes
+- Configurable underscore meaning (from Squeak)
+- Enable / disable Shout in Workspaces
+- Big speedup of BW PNG
+- Many minor fixes and cleanup
+
+New in Cuis 2.3
+- Fixes for internalized sources
+- Decompiler fixes by nice
+- Various code cosmetics fixes
+- Enhancements to prettyPrint by cmm
+- A fix to WeakRegistry by ul
+- Added BitBltTests to allow knowing if the VM is updated
+- A serious simplification of Morphic geometry, removing DisplayTransform
+- InteractiveErrorCorrection fixes by cao and jmv
+- Lots of minor fixes
+
+New in Cuis 2.2
+- Better default and min annotationPaneHeight
+- A fix for ScannerTest
+- Simplification of MessageTally
+- Removal of MethodFinder, ImageSegment, OldSocket, GIFReadWriter, LimitingLineStreamWrapper
+- Memory and code size savings in MenuIcon and MenuMorph
+- Minor fixes and enhancements to DifferenceFinder, Shout, Streams, #isXXX methods, CodeHolder, ByteArray, Semaphore
+- Removal of unused methods and forms
+
+New in Cuis 2.1
+- Support for the Unary numeral system, as suggested by Dan Ingalls at http://lists.squeakfoundation.org/pipermail/squeak-dev/2000-March/013368.html
+- A new code differ that shows differences in words and not lines, by Leandro Caniglia
+- Closure measurements (based on work by Eliot Miranda) are shown in the annotation pane for any method
+- Removal of 43 isXXX methods, replaced by the general #is: method
+- Misc. fixes and enhancements from Squeak and/or Pharo
+
+New in Cuis 2.0
+Full Closure Support. With full closure support, you can finally use recursive blocks like here:
+	fac := [ :n | n > 1 ifTrue:  n * (fac value: n-1)] ifFalse: [1]].
+	fac value: 5. "120"
+and close over temps correctly, such as here:
+	(1 to: 10) do: [ :i | WorldState addDeferredUIMessage: [ Transcript cr; show: i ]].
+This is nother closures example
+	fib := [ :n | n < 2 ifTrue: [1] ifFalse: [(fib value: n-1) + (fib value: n-2)]].
+	fib value: 10. "89"
+Cuis 2.0 is ready to run on the Cog VM (when available) and it requires a closures-enabled VM. 

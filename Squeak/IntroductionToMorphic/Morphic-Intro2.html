@@ -1,0 +1,58 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Juan Manuel Vuletich">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (Win98; U) [Netscape]">
+   <title>Morphic</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" alink="#000088" background="back1.GIF">
+
+<center>
+<h1>
+<img SRC="Squeak2.GIF" height=60 width=86>&nbsp;&nbsp;&nbsp; Morphic -
+The Squeak User Interface</h1></center>
+
+<div align=right>by Juan Manuel Vuletich</a></div>
+<a href="../JuanEng.html">Back to Juan's studio</a>
+<p><a href="Morphic-Intro.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="Morphic.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="Morphic-Conventional.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+<hr WIDTH="100%">
+<br>Morphic allows merging Model and View in a single Morphic object that
+besides being a model, it also knows about user interaction. The controller
+is no longer needed. This is simpler, but won't allow for different views
+on the same model. If this is desired, model and view can be separated;
+making a non-morphic object for the model, and a morph for the view. The
+event propagation mechanism is available for communicating the view and
+the model in the same fashion as in MVC.&nbsp; (The MorphicWrappers package
+developed by the MathMorphs group avoids the need to build a view for every
+model, by means of standard views or wrappers, which allows Morphic manipulation
+of any Smalltalk object.) Therefore, Morphic is both simpler and more flexible.
+It allows us to think in Models and Views or in Graphical Objects at our
+choice.
+<h3>
+What are Morphs?</h3>
+Morphic is based on a simple and general idea: Some objects can interact
+with the user, knowing how to render themselves on a Display, and how to
+react to user actions. They are called Morphs (From the Greek, shape or
+form).
+<p><font color="#000099">"In addition, a morph may:</font>
+<br><font color="#000099">1.&nbsp; perform actions in response to user
+inputs;</font>
+<br><font color="#000099">2.&nbsp; perform an action when another morph
+is dropped onto it, or when it is dropped onto another morph;</font>
+<br><font color="#000099">3.&nbsp; perform an action at regular intervals;
+and</font>
+<br><font color="#000099">4.&nbsp; control the placement and size of its
+submorphs.</font>
+<br><font color="#000099">Any morph can have component morphs (called submorphs).
+A morph with submorphs is called a composite morph. The submorphs are said
+to be embedded in the composite morph. The submorphs can in turn be composite
+morphs, to any depth. Each morph can be embedded in at most one composite
+morph, so the submorph relation defines a tree of morphs. A composite morph
+is treated as a unit; moving, copying, or deleting a composite morph causes
+all its submorphs to be moved, copied, or deleted as well."</font>
+<br>
+<hr WIDTH="100%">
+<br><a href="Morphic-Intro.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="Morphic.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="Morphic-Conventional.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+</body>
+</html>

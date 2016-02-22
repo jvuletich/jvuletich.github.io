@@ -1,0 +1,25 @@
+Rename class and update references goodie
+Process scheduling enh
+MessageTally enh
+Logging and ChangeSet enhancements
+Dan's == with SmallIntegers
+Affected class categories goodie
+Protocol Catcher goodie
+Nicer Cursors
+Chronology enh
+ProgressBar enh
+Text cleanup and refactoring
+ScrollPane and ScrollBar cleanup & refactor
+NiceFonts
+Code authorship and relicensing
+Focus navigation and enh
+Pointer explorer goodie
+Code evaluation fixes
+Remote cursor sender goodie
+Kernel: Semaphores, Delays, Processes, WeakReferences
+Eliot Miranda's Block Closures
+Parser enh
+Polygons and Curves
+Misc goodies and lesser tweaks
+Cleanup
+Morphic / LightWidgets

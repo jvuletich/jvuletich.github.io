@@ -1,0 +1,169 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Juan Manuel Vuletich">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (Win98; U) [Netscape]">
+   <title>Procesamiento de Imagenes</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" alink="#000088" background="back1.GIF">
+
+<center>
+<h1>
+<img SRC="Squeak2.GIF" height=60 width=86>&nbsp;&nbsp;&nbsp; Introducci&oacute;n
+al Procesamiento de Im&aacute;genes</h1></center>
+
+<div align=right>por <a href="mailto:jvuletic@dc.uba.ar">Juan Manuel Vuletich</a></div>
+<a href="../../JuanEsp.html">Volver al estudio de Juan</a>
+<p><a href="TP0Esp.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEsp.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="TP2Esp.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+<hr WIDTH="100%">
+<center>
+<h1>
+Trabajos Pr&aacute;cticos 1a y 1b</h1></center>
+
+<h2>
+<font size=+2>Ejercicio A1</font></h2>
+&nbsp;&nbsp;&nbsp; Se solicit&oacute; implementar suma y resta punto a
+punto de im&aacute;genes, con distintas posibilidades para alinearlas.
+<h2>
+<font size=+2>Ejercicio A2</font></h2>
+&nbsp;&nbsp;&nbsp; Se solicit&oacute; implementar la operaci&oacute;n de
+convoluci&oacute;n entre dos im&aacute;genes. Debido a lo costoso que resulta
+la ejecuci&oacute;n de esta operaci&oacute;n en Smalltalk (que es un lenguaje
+interpretado), se utiliz&oacute; la generaci&oacute;n autom&aacute;tica
+de c&oacute;digo C a partir del c&oacute;digo Smalltalk ya implementado
+y probado. Este c&oacute;digo C fue compilado como una dll que es llamada
+autom&aacute;ticamente de estar disponible. El resultado es bajar tiempos
+que iban de 2 a 10 minutos, y que ahora son de 2 a 10 segundos.
+<h2>
+<font size=+2>Ejercicio A3</font></h2>
+&nbsp;&nbsp;&nbsp; Se solicit&oacute; implementar la suma, resta, multiplicaci&oacute;n
+y divisi&oacute;n de una imagen por un escalar.
+<h2>
+<font size=+2>Ejercicio A4</font></h2>
+&nbsp;&nbsp;&nbsp; Se solicit&oacute; implementar la operaci&oacute;n de
+Umbral.
+<h2>
+<font size=+2>Ejercicio A5</font></h2>
+&nbsp;&nbsp;&nbsp; Se solicit&oacute; implementar la binarizaci&oacute;n
+de una imagen a partir de un Umbral.
+<h2>
+<font size=+2>Ejercicio A6</font></h2>
+&nbsp;&nbsp;&nbsp; Se solicit&oacute; poder calcular la cantidad de p&iacute;xeles
+que se encuentran entre dos valores de un histograma.
+<h2>
+<font size=+2>Ejercicio A7</font></h2>
+&nbsp;&nbsp;&nbsp; Se solici&oacute; poder aplicar una funci&oacute;n al
+valor de los pixeles de una imagen y/o un histograma, calculando la nueva
+imagen y/o histograma resultante.
+<br><img SRC="ProcImagenes04.JPG" height=565 width=887>
+<h2>
+<font size=+2>Ejercicio B1</font></h2>
+&nbsp;&nbsp;&nbsp; Se solicit&oacute; implementar el Histograma Acumulado
+de una Imagen. Un Histograma Acumulado, para cada valor de pixel, indica
+cuantos pixels contiene la imagen de valor menor o igual a &eacute;l. La
+implementaci&oacute;n realizada es calcul&aacute;ndolo a partir del Histograma
+convencional.
+<h2>
+<font size=+2>Ejercicio B2</font></h2>
+&nbsp;&nbsp;&nbsp; Se parte de una imagen, su histograma, su histograma
+acumulado, y una funci&oacute;n que toma valores de pixels y devuelve valores
+de pixels. Se solicito calcular y mostrar el histograma acumulado, el histograma
+normal y la imagen que resultar&iacute;an de aplicar la funci&oacute;n
+a cada uno de los pixels. La implementaci&oacute;n realizada consiste en
+poder aplicar cualquier funci&oacute;n tanto a los histogramas como a la
+imagen. De esta manera, si se desea el histograma acumulado resultante,
+se aplica la funci&oacute;n &uacute;nicamente al histograma acumulado original.
+Si adem&aacute;s se desea el histograma convencional resultante, se debe
+aplicar la funci&oacute;n al histograma convencional original, lo que permitir&aacute;
+posteriormente obtener tambi&eacute;n el nuevo histograma acumulado. Si
+adem&aacute;s se desea la imagen resultante, entonces se aplicar&aacute;
+la funci&oacute;n directamente a la imagen original. De la nueva imagen
+podr&aacute;n obtenerse despu&eacute;s el nuevo histograma, y el nuevo
+histograma acumulado. Se incluy&oacute; en la interfaz al usuario tanto
+la posibilidad de ingresar por teclado la funci&oacute;n a utilizar (en
+la forma de un bloque Smalltalk), como tambi&eacute;n un conjunto de funciones
+ya inclu&iacute;das, y accesibles por un men&uacute;.
+<h2>
+<font size=+2>Ejercicio B3</font></h2>
+&nbsp;&nbsp;&nbsp; Se solicit&oacute; implementar la convoluci&oacute;n
+de una imagen por otra, tanto para valores de pixels enteros como reales.
+Se realiz&oacute; la implementaci&oacute;n correspondiente, y se incluyeron
+los ejemplos solicitados juntamente con el c&oacute;digo de la implementaci&oacute;n.
+Para facilitar preparaci&oacute;n de las im&aacute;genes a ser usadas como
+filtro, se incluy&oacute; en la interfaz al usuario la posibilidad de ingresar
+directamente los valores de los pixels en una matriz cuadrada, similar
+a una planilla de c&aacute;lculo. Se observ&oacute; que los filtros pasa-bajos
+suavizan las im&aacute;genes, haci&eacute;ndolas borrosas; y los pasa-altos
+enfatizan los bordes.
+<br><img SRC="ProcImagenes02.gif" height=634 width=930>
+<h2>
+<font size=+2>Ejercicio B4</font></h2>
+
+<h3>
+<i>Introducci&oacute;n</i></h3>
+&nbsp;&nbsp;&nbsp; Se solicito aplicar un conjunto de filtros est&aacute;ndar
+a im&aacute;genes de prueba, observar el resultado y sacar conclusiones.
+Uno de ellos es el Filtro de la Mediana, para una ventana de n x m. Los
+dem&aacute;s son convoluciones.
+<h3>
+<i>Comentarios</i></h3>
+
+<h4>
+Filtro de la Mediana</h4>
+&nbsp;&nbsp;&nbsp; Se implement&oacute; el Filtro de la Mediana para una
+ventana de n x m. Se observ&oacute; que se eliminan los detalles de tama&ntilde;o
+menor a la ventana. Se suavizan los bordes de las &aacute;reas de un determinado
+color, pero no los colores en s&iacute;. El resultado es que las &aacute;reas
+de cada color se vuelven m&aacute;s evidentes. Algunas im&aacute;genes
+quedan similares a los mapas geogr&aacute;ficos donde se colorea con distinto
+color las zonas de distinta altura. Sin embargo, si la imagen original
+tiene una gran cantidad de tonos diferentes, este defecto no es visible,
+y se eliminan imperfecciones peque&ntilde;as y ruido.
+<h4>
+Filtros pasa-altos</h4>
+&nbsp;&nbsp;&nbsp; Los restantes filtros son todos pasa-altos. Ayudan a
+detectar bordes. Las zonas que en la imagen original son de un tono uniforme
+(cualquiera sea) se transforman en un gris mediano (valores cercanos al
+cero). Los bordes, zonas donde hay un cambio abrupto de nivel de luminosidad,
+son enfatizados. Algunos resultan negros (valores negativos) y otros blancos
+(valores positivos). Otros bordes no son enfatizados y quedan grises (valores
+cercanos al cero). Qu&eacute; bordes son enfatizados y c&oacute;mo es lo
+que diferencia a cada uno de los filtros solicitados.
+<p>&nbsp;&nbsp;&nbsp; Esta alteraci&oacute;n de los bordes produce una
+ilusi&oacute;n de relieve. La imagen parece hundirse y sobresalir, iluminada
+por una fuente de luz. Los aclarados parecen ser m&aacute;s iluminados,
+y los oscurecidos parecen sombras. Las zonas que en la imagen original
+eran m&aacute;s oscuras parecen hundirse, mientras que las m&aacute;s claras
+parecen sobresalir. Es como considerar a la imagen como una superficie
+bidimensional en un espacio tridimensional, siendo el valor del pixel la
+altura de la superficie en ese punto. Cada filtro parece produce la fuente
+de luz en un lugar distinto. Esto hace que cambien los bordes iluminados
+y las sombras. En general, los bordes perpendiculares a la fuente de luz
+son enfatizados. Aquellos que tengan zonas oscuras (que se hunden) del
+lado de la luz, se aclaran. Aquellos que tengan zonas claras (que sobresalen)
+del lado de la luz, se oscurecen, al quedar en la sombra. Los bordes paralelos
+a la fuente de loz no se enfatizan, y se vuelven invisibles. En general,
+la fuente de luz ilumina desde la zona donde est&eacute;n los valores positivos
+hacia la zona donde est&eacute;n los valores negativos del filtro.
+<h5>
+Roberts</h5>
+La fuente de luz se ubica arriba a la derecha en un caso, y arriba a la
+izquierda en el otro. En ambos casos ilumina en direcci&oacute;n diagonal.
+<h5>
+Prewitt</h5>
+En un caso la iluminaci&oacute;n es desde arriba, y en el otro desde la
+derecha.
+<h5>
+Sobel</h5>
+Tambi&eacute;n la iluminaci&oacute;n es desde arriba en un caso, y en el
+otro desde la derecha.
+<h5>
+Compass Operator</h5>
+Hay cuatro casos. Iluminaci&oacute;n desde arriba, desde la derecha, desde
+arriba a la derecha y desde arriba a la izquierda.
+<p>
+<hr WIDTH="100%">
+<br><a href="TP0Esp.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEsp.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="TP2Esp.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+</body>
+</html>

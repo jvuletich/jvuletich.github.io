@@ -1,0 +1,194 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Juan Manuel Vuletich">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (Win98; U) [Netscape]">
+   <title>Procesamiento de Imagenes</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" alink="#000088" background="back1.GIF">
+
+<center>
+<h1>
+<img SRC="Squeak2.GIF" height=60 width=86>&nbsp;&nbsp;&nbsp; Introducci&oacute;n
+al Procesamiento de Im&aacute;genes</h1></center>
+
+<div align=right>por <a href="mailto:jvuletic@dc.uba.ar">Juan Manuel Vuletich</a></div>
+<a href="../../JuanEsp.html">Volver al estudio de Juan</a>
+<p><a href="TP2Esp.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEsp.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="DownloadEsp.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+<hr WIDTH="100%">
+<center>
+<h1>
+Trabajos Pr&aacute;cticos 3 y 4</h1></center>
+
+<h2>
+<b><font face="Arial"><font size=+1>Ejercicio 1 - Detecci&oacute;n de Bordes
+por la Derivada Primera</font></font></b></h2>
+
+<h3>
+<i><font face="Arial"><font size=+1>Introducci&oacute;n</font></font></i></h3>
+&nbsp;&nbsp;&nbsp; Se solicit&oacute; implementar detecci&oacute;n de bordes
+por la derivada primera. Esto se hace convolucionando la imagen con un
+filtro que aproxime la derivada primera, y despues considerando borde aquellos
+pixels cuyo valor absoluto supere cierto umbral.
+<h3>
+<b><i><font face="Arial">Desarrollo</font></i></b></h3>
+&nbsp;&nbsp;&nbsp; Como aproximaciones de la derivada primera, inclu&iacute;
+los siguientes filtros pasa-altos: Compass Horizontal, CompassVertical,
+Compass 45<sup>o</sup>, Compass -45<sup>o</sup>, Roberts 45<sup>o</sup>,
+Roberts -45<sup>o</sup>. Para todos estos filtros inclu&iacute; tres maneras
+de determinar el umbral:
+<ul>
+<li>
+Umbral ingresado por el usuario</li>
+
+<li>
+Umbral calculado a partir de la imagen filtrada</li>
+
+<li>
+Dos umbrales: uno global y uno local, ambos calculados a partir de de la
+imagen filtrada.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Se observa que cada filtro detecta con mayor facilidad
+los bordes paralelos a la direcci&oacute;n del filtro (por ejemplo, Compass
+Horizontal detecta con mayor facilidad bordes horizontales). Se obtienen
+buenos resultados obteniendo los bordes por dos filtros perpendiculares
+entre s&iacute; y combinando luego los resultados.
+<h4>
+<b><i><font face="Arial">Inclusi&oacute;n de la Varianza Local</font></i></b></h4>
+&nbsp;&nbsp;&nbsp; Se solicit&oacute; tambien exigir que un pixel, para
+ser considerado borde, este en una vecindad que tenga una varianza local
+que supere cierto umbral. En el caso de los bordes detectados por la derivada
+primera esto no provoca ninguna mejora, ya que todos los bordes considerados
+est&aacute;n en zonas de alta varianza local (por esto es que su derivada
+primera tiene un valor absoluto alto).
+<br><img SRC="ProcImagenes09.JPG" height=577 width=949>
+<h2>
+<b><font face="Arial"><font size=+1>Ejercicio 2 - Detecci&oacute;n de Bordes
+por la Derivada Segunda</font></font></b></h2>
+
+<h3>
+<b><i><font face="Arial">Introducci&oacute;n</font></i></b></h3>
+&nbsp;&nbsp;&nbsp; Se solicit&oacute; implementar detecci&oacute;n de bordes
+por la derivada segunda. Esto se hace convolucionando la imagen con un
+filtro que aproxime la derivada segunda, y despu&eacute;s considerando
+borde aquellos pixels que representen un cruce por cero.
+<h3>
+<b><i><font face="Arial">Desarrollo</font></i></b></h3>
+&nbsp;&nbsp;&nbsp; Como aproximaciones de la derivada segunda primera,
+inclu&iacute; los siguientes filtros laplacianos:
+<p><tt>a) 0&nbsp; 1&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; b) 1&nbsp; 1&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp; c) -1&nbsp; 2 -1</tt>
+<br><tt>&nbsp;&nbsp; 1 -4&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1 -8&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 -4&nbsp;
+2</tt>
+<br><tt>&nbsp;&nbsp; 0&nbsp; 1&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp; 1&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1&nbsp; 2
+-1</tt>
+<p>&nbsp;&nbsp;&nbsp; Como criterios de vecindad (qu&eacute; vecinos tomar
+en cuanta para considerar o no cruce por cero a un pixel), implemente 4
+vecinos (arriba, abajo, derecha e izquierda) y 8 vecinos (incluyendo tambien
+a los vecinos en diagonal).
+<p>&nbsp;&nbsp;&nbsp; El resultado de esta t&eacute;cnica no es satisfactorio
+porque m&aacute;s de la mitad de los pixels de la imagen son considerados
+bordes. Esto empeora al considerar 8 vecinos. La utilidad de esta t&eacute;cnica
+aparece cuando se aplica un umbral sobre la varianza local.
+<h4>
+<b><i><font face="Arial">Inclusi&oacute;n de la Varianza Local</font></i></b></h4>
+&nbsp;&nbsp;&nbsp; Se solicit&oacute; tambien exigir que un pixel, para
+ser considerado borde, este en una vecindad que tenga una varianza local
+que supere cierto umbral. En este caso se obtiene una mejora considerable,
+detect&aacute;ndose bordes que no se detectaban al aplicar la derivada
+primera, sin detectar m&aacute;s bordes esp&uacute;reos.
+<h2>
+<b><font face="Arial"><font size=+1>Ejercicio 3 - Detecci&oacute;n de Bordes
+por el Laplaciano del Gausiano</font></font></b></h2>
+
+<h3>
+<b><i><font face="Arial">Introducci&oacute;n</font></i></b></h3>
+Se solicit&oacute; implementar detecci&oacute;n de bordes por el Laplaciano
+del Gausiano. Esto se hace convolucionando la imagen con este filtro que
+aproxime la derivada segunda, y despu&eacute;s considerando borde aquellos
+pixels que representen un cruce por cero.
+<h3>
+<b><i><font face="Arial">Desarrollo</font></i></b></h3>
+&nbsp;&nbsp;&nbsp; El armado del filtro Laplaciano del Gausiano se hace
+en funci&oacute;n del parametro sigma, ingresado por el usuario. El programa
+calcula la imagen m&aacute;s peque&ntilde;a que incluya a todos los valores
+cuyo valor absoluto sea mayor que 0.001. Por ejemplo, para sigma = 1 la
+imagen construida es de 13 x 13; para 1.2 es de 15 x 15 y para 2 es de
+21 x 21.
+<p>&nbsp;&nbsp;&nbsp; Posteriormente se convoluciona la imagen con el filtro,
+y se consideran bordes a los cruces por cero. Como criterios de vecindad
+(qu&eacute; vecinos tomar en cuanta para considerar o no cruce por cero
+a un pixel), implemente 4 vecinos (arriba, abajo, derecha e izquierda)
+y 8 vecinos (incluyendo tambien a los vecinos en diagonal).
+<p>&nbsp;&nbsp;&nbsp; El resultado de este filtro es visualmente muy atractivo.
+De cualquier manera, detecta una enorme cantidad de bordes esp&uacute;reos.
+<h4>
+<b><i><font face="Arial">Inclusi&oacute;n de la Varianza Local</font></i></b></h4>
+&nbsp;&nbsp;&nbsp; Se solicit&oacute; tambien exigir que un pixel, para
+ser considerado borde, este en una vecindad que tenga una varianza local
+que supere cierto umbral. Al aplicar esta t&eacute;cnica juntamente con
+el Laplaciano del Gausiano se obtiene el mejor resultado de todas las t&eacute;cnicas
+implementadas.
+<br><img SRC="ProcImagenes10.JPG" height=634 width=993>
+<h2>
+<b><font face="Arial"><font size=+1>Ejercicio 4 - Sensibilidad al Ruido</font></font></b></h2>
+
+<h3>
+<b><i><font face="Arial">Introducci&oacute;n</font></i></b></h3>
+&nbsp;&nbsp;&nbsp; Se solicit&oacute; estudiar el comportamiento de todos
+los m&eacute;todos de detecci&oacute;n de bordes ya descriptos frente a
+im&aacute;genes ruidosas.
+<h3>
+<b><i><font face="Arial">Desarrollo</font></i></b></h3>
+&nbsp;&nbsp;&nbsp; Se aplicaron todos los m&eacute;todos a imagenes sin
+ruido y posteriormente a im&aacute;genes contaminadas. Se prepar&oacute;
+la matriz de resultados solicitada.
+<br>&nbsp;
+<h4>
+T&eacute;cnica aplicada</h4>
+a - Compass Horizontal
+<br>b - Compass Vertical
+<br>c – Laplaciano A con 4 vecinos y con Varianza Local.
+<br>d – Laplaciano del Gausiano, con sigma = 1.2 y varianza local.
+<h4>
+Tipo de contaminaci&oacute;n</h4>
+1 - S&amp;P (10, 255, 0)
+<br>2 – Aditivo Gaussiano con media 0 y desvio est&aacute;ndar 30, al 100%.
+Antes de la detecci&oacute;n se limito la imagen a valores entre 0 y 255.
+<h4>
+Resultados obtenidos</h4>
+<tt>a1&nbsp; 0.95 0.22 Indice: 0.156</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 0.05 0.78</tt>
+<p><tt>b1&nbsp; 0.91 0.22 Indice: 0.183</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 0.09 0.78</tt>
+<p><tt>c1&nbsp; 0.99 0.42 Indice: 0.274</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 0.01 0.58</tt>
+<p><tt>d1&nbsp; 0.86 0.41 Indice: 0.379</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 0.14 0.59</tt>
+<p><tt>a2&nbsp; 0.98 0.01 Indice: 0.015</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 0.02 0.99</tt>
+<p><tt>b2&nbsp; 0.93 0.01 Indice: 0.042</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 0.07 0.99</tt>
+<p><tt>c2&nbsp; 0.82 0.01 Indice: 0.105</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 0.18 0.99</tt>
+<p><tt>d2&nbsp; 0.85 0.01 Indice: 0.087</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 0.15 0.99</tt>
+<p>&nbsp;&nbsp;&nbsp; Nota: Al procesar im&aacute;genes con ruido aditivo
+gaussiano con alg&uacute;n metodo que incluya varianza local, resulta indispensable
+ajustar el umbral de varianza local para que sea no menor que la varianza
+del ruido. De otra manera, el resultado es inutilizable.
+<p>&nbsp;&nbsp;&nbsp; En los casos estudiados, el Laplaciano del Gausiano
+consistentemente supera a la Derivada Segunda.
+<p>&nbsp;&nbsp;&nbsp; En im&aacute;genes sin ruido, el Laplaciano del Gausiano
+da siempre los mejores resultados. Pero en im&aacute;genes ruidosas, la
+Derivada Primera resulta menos afectada. Esto significa que (segun el caso)
+los resultados obtenidos por la Derivada Primera pueden ser mejores que
+los obtenidos por el Laplaciano del Gausiano.
+<p>
+<hr WIDTH="100%">
+<br><a href="TP2Esp.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEsp.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="DownloadEsp.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+</body>
+</html>

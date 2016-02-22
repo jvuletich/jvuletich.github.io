@@ -1,0 +1,95 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Juan Manuel Vuletich">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (Win98; U) [Netscape]">
+   <title>Image Processing</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" alink="#000088" background="back1.GIF">
+
+<center>
+<h1>
+<img SRC="Squeak2.GIF" height=60 width=86>&nbsp;&nbsp;&nbsp; PhotoSqueak
+1.0</h1></center>
+
+<div align=right>by Juan Manuel Vuletich</a></div>
+<a href="../../JuanEng.html">Back to Juan's studio</a>
+<p><a href="TP1Eng.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEng.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="TP3y4Eng.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+<hr WIDTH="100%">
+<center>
+<h1>
+Part 3</h1></center>
+
+<h2>
+<font size=+2>Exercise</font><b><font face="Arial"> 1</font></b></h2>
+
+<h3>
+<i><font face="Arial">Introduction</font></i></h3>
+Histogram Equalization.
+<h3>
+<img SRC="ProcImagenes05.JPG" height=506 width=998></h3>
+
+<h3>
+<b><i><font face="Arial">Development</font></i></b></h3>
+&nbsp;&nbsp;&nbsp; First I implemented Histogram equalization of monochromatic
+images. The contrast is greatly enhanced, and no artificial artifacts are
+seen.
+<p>&nbsp;&nbsp;&nbsp; Then I tried the technique to color (multiband) images.
+I equalized each band on its own. The result is not good, because the colors
+in the image are modified. I also included the posibility to equalize the
+norm of the pixels, weighting together all the color bands. The result
+is much better. The image on the left is the norm-equalized one, and the
+image on the righ is the band-equalized one.
+<h1>
+<img SRC="ProcImagenes06.JPG" height=672 width=949></h1>
+
+<h1>
+<font size=+2>Exercise<b><font face="Arial"> 2</font></b></font></h1>
+
+<h2>
+<b><i><font face="Arial"><font size=+1>Introduction</font></font></i></b></h2>
+&nbsp;&nbsp;&nbsp; It was asked to do a local minimum image classification.
+<h2>
+<b><i><font face="Arial"><font size=+1>Development</font></font></i></b></h2>
+&nbsp;&nbsp;&nbsp; I implemented a "smooth histogram". Local minimum are
+found, and the image is classified. I did not implement this techique on
+color (multiband) image. This would require finding minimum values on a
+multi-dimensional space, and thus requires further study.
+<br><img SRC="ProcImagenes07.JPG" height=593 width=866>
+<h1>
+<font size=+2>Exercise<b><font face="Arial"> 3</font></b></font></h1>
+
+<h2>
+<b><i><font face="Arial"><font size=+1>Introduction</font></font></i></b></h2>
+It was asked to generate noise images with several distributions.
+<h2>
+<b><i><font face="Arial"><font size=+1>Development</font></font></i></b></h2>
+&nbsp;&nbsp;&nbsp; I first implemented a normal distribution noise generation,
+based on the Box-M&uuml;ller method. Then I implemented the noise image
+generation. For multiband images, each band is generated separatedly. When
+trying to show histograms it became evident the need for aproximate histograms,
+because in noisy images, no pixel value is usually used twice. We would
+end with a huge histogram where most entries have only one or two pixels.
+What we really need is the "density" of the histogram, in pixel value intervals.
+<p>&nbsp;&nbsp;&nbsp; An Aproximate Histogram is a hibrid between an static
+and a dynamic histogram and is really useful for Float images. The actual
+range of the values of the image is taken and divided in a number of equal
+width intervals. For each pixel value in the image, the corresponding interval
+is found. So, the histogram counts the pixels in each interval. See how
+it looks in this example:
+<p><img SRC="ProcImagenes08.JPG" height=593 width=906>
+<h1>
+<font size=+2>Exercise<b><font face="Arial"> 4</font></b></font></h1>
+
+<h2>
+<b><i><font face="Arial"><font size=+1>Introduction</font></font></i></b></h2>
+&nbsp;&nbsp;&nbsp; It was asked to contaminate images with Salt &amp; Pepper,
+Aditive and Multiplicative noise, and in different distributions, the test
+images. It was asked to apply different filters and to draw conclusions.
+I didn't include examples here, but you can try them if you want.
+<p>
+<hr WIDTH="100%">
+<br><a href="TP1Eng.html"><img SRC="previous.GIF" BORDER=2 height=32 width=32></a><a href="ImageProcessingEng.html"><img SRC="buthome2.gif" BORDER=2 height=32 width=39></a><a href="TP3y4Eng.html"><img SRC="next.GIF" BORDER=2 height=32 width=32></a>
+</body>
+</html>
