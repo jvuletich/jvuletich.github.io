@@ -1,0 +1,67 @@
+An example of LightWidgets programming
+===========================
+
+The ProgrammingWithLightWidgets.txt document might be a little boring to read with all those rules. This document, instead, shows the style of LightWidgets programming based on a concrete example. It focuses on building application guis, an not on building widgets themselves. GUIs done following the LightWidgets ideas are very simple. Remembering the rules might seem a bit rigid, but this avoids complexity in the GUI, making long term mainteinance easier.
+
+The example I chose is the Local Users screen in Squeak STB, class STBLocalUserEditorLW. Model are instances of STBLocalUser.
+
+Note that even though models are advised to inherit from ActiveModel, STBLocalUser does not. This shows a general rule: Views don't have the right to say how models should work. Models are independent of views. In this case, STBLocalUser inherits from STBModel, the class of persistent objects in the box.
+
+Local users are pretty simple objects. They have a userName, a password (only a passwordHash is stored), and a list of groups the user belongs to.
+
+The GUI has the following widgets:
+- An entry field for the name
+- An entry field for the password
+- A list of groups the user belongs to. Selecting one and doing <ok> removes the group from the user
+- A list of available groups (groups the user does not belong to). Selecting one and doing <ok> adds the group to the user.
+
+In addition, we have:
+- A 'Create new User' button
+- A list of existing users. Selecting one and doing <ok> edits that user
+- A 'Save' button
+- A 'Close' button that exist without saving
+- A 'Delete' button used to actually delete the currently edited user
+
+Class STBLocalUserEditorLW has several instance variables for holding its widgets, one model extension 'password'. and one visual property: 'backColor'. Instance variable 'backColor' is only there to avoid computing it each time thescreen is redrawn. Instance variable 'password' is needed because the STBLocalUser can not answer it.
+
+The model is an instance of STBLocalUser. However, the list of available users does not depend on it. This list has content even if no model is assigned yet. The model is set later, in messages #selectedUser: and #newUser.
+
+Initialization
+-----------------
+
+Method #initialize creates all the widgets. It is quite long but it does not do anything interesting. It just creates the widgets, lays them out, adds them as submorphs, and stores them in instance variables. It also does 'self newUser', so the user does not need to click the button before entering data.
+
+Note that the target of all buttons is 'self', meaning that user commands will be processed by the editor itself. In many cases, (as in the name fields in this editor) the target of the actions would be the model instead.
+
+drawing
+------------
+
+Method #drawOn: is there only because the backColor is defined in this class.
+
+updating
+------------
+
+#updateView - This method is called after a new model is set, or if model changes. It sets labels to appropriate values, updates the current and available group lists, and sets the STBUser as the target of the name field. In addition it updates the users list.
+
+#password - helper method to access the password entered by the user.
+
+user commands
+-----------------------
+
+#newUser - Creates a new user and sets it as the model of the view.
+
+#selectedUser: - Sets the selected user as the model of the view. (Persistent objects note: Persistence is paused, to be resumed in case of save. If the user cancels, nothing should be persisted!)
+
+#password: - This is processed here (and not just in the model) to store the password entered by the user.
+
+#addGroup:  - This is processed here (and not just in the model) to handle keyboard focus.
+
+#removeGroup: - This is processed here (and not just in the model) to handle keyboard focus.
+
+#saveUser - This makes changes persistent, and logs stuff.
+
+#deleteUser - This removes the user from the persistent pool and logs stuff.
+
+#cancel - This undoes any changes (by going back to the persisted state), resumes persistence, and closes the editor
+
+That's all. It wasn't hard at all, was it?
